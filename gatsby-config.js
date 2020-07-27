@@ -6,5 +6,10 @@
 
 module.exports = {
   /* Your site config here */
-  plugins: [],
+  siteMetadata: {
+    title: 'Migrainius',
+  },
+  plugins: [
+    'gatsby-plugin-styled-components'
+  ],
 }
