@@ -1,19 +1,24 @@
 import React from 'react'
 import styled from 'styled-components'
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
-import { faGithubAlt } from "@fortawesome/free-brands-svg-icons"
-import { faUser } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
+import { faGithubAlt } from '@fortawesome/free-brands-svg-icons'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 const StyledFooter = styled.footer`
   display: flex;
   flex-direction: column;
   align-items: center;
   color: ${props => props.theme.colors.darkGrey};
-  margin-top: 100px;
+  margin-top: 200px;
+
+  @media (max-width: 1024px) {
+    margin-top: 100px;
+  }
 
   & p {
     margin: 0;
+    text-align: center;
   }
 
   & p:first-child {

@@ -8,6 +8,10 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 
 const GlobalStyle = createGlobalStyle`
+  html {
+    margin: 0;
+  }
+
   body {
     background: #121327;
     margin: 0;
@@ -17,6 +21,11 @@ const GlobalStyle = createGlobalStyle`
 
 const Container = styled.div`
   margin: 0 40px;
+
+  @media (max-width: 1024px) {
+    margin: 0 12px;
+  }
+
 `
 
 export default function Layout({children}) {
