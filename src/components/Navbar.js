@@ -44,7 +44,7 @@ const Navbar = () => {
             <StyledLink to="/" activeClassName="active">About</StyledLink>
           </li>
           <li>
-            <StyledLink to="" activeClassName="active">Sign up</StyledLink>
+            <StyledLink to="/sign-up/" activeClassName="active">Sign up</StyledLink>
           </li>
           <li>
             <StyledLink to="" activeClassName="active">Log in</StyledLink>

@@ -134,7 +134,7 @@ export default function Home() {
             <p>IT’S TIME TO FIGHT BACK!</p>
             <p>Start recording your migraines to better control them</p>
           </div>
-          <StyledHomeButton><Link to="">Start Now</Link></StyledHomeButton>
+          <StyledHomeButton><Link to="/sign-up/">Start Now</Link></StyledHomeButton>
         </StyledTextPart>
 
         <div className="img-part">
