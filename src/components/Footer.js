@@ -10,6 +10,7 @@ const StyledFooter = styled.footer`
   flex-direction: column;
   align-items: center;
   color: ${props => props.theme.colors.darkGrey};
+  margin-top: 100px;
 
   & p {
     margin: 0;

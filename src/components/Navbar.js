@@ -8,6 +8,7 @@ const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 50px;
 `
 
 const StyledUl = styled.ul`

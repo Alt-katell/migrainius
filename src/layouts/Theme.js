@@ -6,6 +6,7 @@ import 'typeface-montserrat'
 
 const theme = {
   colors: {
+    background: "#121327",
     green: "#30CEB3",
     darkBlue: "#3D57E0",
     mediumBlue: "#4F69EF",
