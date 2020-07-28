@@ -5,14 +5,13 @@ import { createGlobalStyle } from 'styled-components'
 import Theme from './Theme'
 
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 
 const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,300&family=Roboto:wght@300;400&display=swap');
-
   body {
     background: #121327;
     margin: 0;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat"
   }
 `
 
@@ -26,8 +25,9 @@ export default function Layout({children}) {
       <Container>
       <Theme>
         <GlobalStyle/>
-        <Navbar/>
+        <Navbar />
         {children}
+        <Footer />
       </Theme>
       </Container>
     </div>

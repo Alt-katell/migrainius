@@ -2,23 +2,20 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
-import colors from '../layouts/Layout'
-
 import logo from './logo.svg'
 
-const Header = styled.header`
+const StyledHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
 `
 
-const Ul = styled.ul`
+const StyledUl = styled.ul`
   list-style: none;
   display: flex;
-  text-decoration: none;
 `
 
-const NavLink = styled(Link)`
+const StyledLink = styled(Link)`
   text-decoration: none;
   color: ${props => props.theme.colors.green};
   margin-left: 24px;
@@ -31,29 +28,29 @@ const NavLink = styled(Link)`
   }
 `
 
-const Logo = styled.img`
+const StyledLogo = styled.img`
   width: 128px;
   height: auto;
 `
 
 const Navbar = () => {
   return (
-    <Header>
-      <Logo src={logo} alt="Migrainius Logo"/>
+    <StyledHeader>
+      <StyledLogo src={logo} alt="Migrainius Logo"/>
       <nav>
-        <Ul>
+        <StyledUl>
           <li>
-            <NavLink to="/" activeClassName="active">About</NavLink>
+            <StyledLink to="/" activeClassName="active">About</StyledLink>
           </li>
           <li>
-            <NavLink to="" activeClassName="active">Sign up</NavLink>
+            <StyledLink to="" activeClassName="active">Sign up</StyledLink>
           </li>
           <li>
-            <NavLink to="" activeClassName="active">Log in</NavLink>
+            <StyledLink to="" activeClassName="active">Log in</StyledLink>
           </li>
-        </Ul>
+        </StyledUl>
       </nav>
-    </Header>
+    </StyledHeader>
   )
 }
 

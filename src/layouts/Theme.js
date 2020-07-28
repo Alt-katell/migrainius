@@ -1,16 +1,21 @@
 import React from 'react'
 import { ThemeProvider } from 'styled-components'
 
+import 'typeface-roboto'
+import 'typeface-montserrat'
+
 const theme = {
   colors: {
     green: "#30CEB3",
     darkBlue: "#3D57E0",
     mediumBlue: "#4F69EF",
-    orange: "#F68251"
+    orange: "#F68251",
+    darkGrey: "#E8E7EE",
+    lightGrey: "#F5F5F5",
   },
   fonts: {
-    montserrat: "'Montserrat', sans-serif",
-    roboto: "'Roboto', sans-serif",
+    montserrat: "Montserrat",
+    roboto: "Roboto",
   }
 }
 
