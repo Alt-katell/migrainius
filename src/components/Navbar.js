@@ -47,7 +47,7 @@ const Navbar = () => {
             <StyledLink to="/sign-up/" activeClassName="active">Sign up</StyledLink>
           </li>
           <li>
-            <StyledLink to="" activeClassName="active">Log in</StyledLink>
+            <StyledLink to="/log-in/" activeClassName="active">Log in</StyledLink>
           </li>
         </StyledUl>
       </nav>

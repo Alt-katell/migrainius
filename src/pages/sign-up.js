@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
@@ -23,7 +24,7 @@ const StyledBackground = styled.div`
 const StyledInput = styled.input`
   border: none;
   border-bottom: 1px solid ${props => props.theme.colors.lightGrey};
-  padding-bottom: 0 0 5px 0;
+  padding: 0 0 5px 0;
   background: ${props => props.theme.colors.darkBlue};
   outline: none;
   color: ${props => props.theme.colors.lightGrey};
@@ -38,6 +39,17 @@ const StyledInput = styled.input`
   }
 `
 
+const StyledP = styled.p`
+  font-style: italic;
+  color: ${props => props.theme.colors.darkGrey};
+  font-size: 14px;
+  text-align: center;
+
+  & a {
+    color: ${props => props.theme.colors.darkGrey};
+  }
+`
+
 const signUp = () => {
   return (
     <Layout>
@@ -48,6 +60,7 @@ const signUp = () => {
           <StyledInput type="password" name="password" placeholder="Password" required />
           <Button><FontAwesomeIcon icon={faPaperPlane} />Sign up</Button>
         </StyledForm>
+        <StyledP>Already have an account? <Link to="/log-in/">Log in</Link></StyledP>
       </StyledBackground>
     </Layout>
   )
