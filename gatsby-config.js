@@ -5,11 +5,11 @@
  */
 
 module.exports = {
-  /* Your site config here */
   siteMetadata: {
     title: 'Migrainius',
   },
   plugins: [
-    'gatsby-plugin-styled-components'
+    'gatsby-plugin-styled-components',
+    'gatsby-plugin-react-helmet'
   ],
 }

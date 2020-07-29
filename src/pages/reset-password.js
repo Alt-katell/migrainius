@@ -43,32 +43,18 @@ const StyledInput = styled.input`
   }
 `
 
-const StyledP = styled.p`
-  font-style: italic;
-  color: ${props => props.theme.colors.darkGrey};
-  font-size: 14px;
-  text-align: center;
-
-  & a {
-    color: ${props => props.theme.colors.darkGrey};
-  }
-`
-
-const logIn = () => {
+const resetPassword = () => {
   return (
     <Layout>
       <StyledBackground>
         <StyledForm>
           <StyledInput type="email" name="email" placeholder="Email" required />
-          <StyledInput type="password" name="password" placeholder="Password" required />
-          <StyledP style={{alignSelf: "flex-start"}}><Link to="/reset-password/">Forgot your password?</Link></StyledP>
-          <Button><FontAwesomeIcon icon={faPaperPlane} />Log in</Button>
+          <Button><FontAwesomeIcon icon={faPaperPlane} />Reset</Button>
         </StyledForm>
-        <StyledP>Don't have an account yet? <Link to="/sign-up/">Sign up</Link></StyledP>
       </StyledBackground>
     </Layout>
   )
 }
 
-export default logIn
+export default resetPassword
 

@@ -25,10 +25,9 @@ const Container = styled.div`
   @media (max-width: 1024px) {
     margin: 0 12px;
   }
-
 `
 
-const Layout = ({children}) => {
+const Layout = ({children, data}) => {
   return (
     <div>
       <Container>
