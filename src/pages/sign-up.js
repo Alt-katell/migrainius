@@ -1,21 +1,23 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
+
 import Layout from '../layouts/Layout'
+import Button from '../components/Button'
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+`
 
 const StyledBackground = styled.div`
   width: 300px;
   background: ${props => props.theme.colors.darkBlue};
   padding: 80px 40px;
   border-radius: 15px;
-`
-
-const StyledField = styled.div`
-  margin-bottom: 40px;
-`
-
-const StyledLabel = styled.label`
-  display: none;
+  margin: 0 auto;
 `
 
 const StyledInput = styled.input`
@@ -29,9 +31,10 @@ const StyledInput = styled.input`
   font-weight: 300;
   font-size: 16px;
   width: 100%;
+  margin-bottom: 40px;
 
   &::placeholder {
-    color: ${props => props.theme.colors.lightGrey};
+    color: ${props => props.theme.colors.darkGrey};
   }
 `
 
@@ -39,22 +42,12 @@ const signUp = () => {
   return (
     <Layout>
       <StyledBackground>
-        <form>
-          <StyledField>
-            <StyledLabel for="name"></StyledLabel>
-            <StyledInput type="text" name="name" placeholder="Name" required />
-          </StyledField>
-
-          <StyledField>
-            <StyledLabel for="email"></StyledLabel>
-            <StyledInput type="email" name="email" placeholder="Email" required />
-          </StyledField>
-
-          <StyledField>
-            <StyledLabel for="password"></StyledLabel>
-            <StyledInput type="password" name="password" placeholder="Password" required />
-          </StyledField>
-        </form>
+        <StyledForm>
+          <StyledInput type="text" name="name" placeholder="Name" required />
+          <StyledInput type="email" name="email" placeholder="Email" required />
+          <StyledInput type="password" name="password" placeholder="Password" required />
+          <Button><FontAwesomeIcon icon={faPaperPlane} />Sign up</Button>
+        </StyledForm>
       </StyledBackground>
     </Layout>
   )

@@ -11,7 +11,7 @@ const theme = {
     darkBlue: "#3D57E0",
     mediumBlue: "#4F69EF",
     orange: "#F68251",
-    darkGrey: "#E8E7EE",
+    darkGrey: "#A9ACB1",
     lightGrey: "#F5F5F5",
   },
   fonts: {
