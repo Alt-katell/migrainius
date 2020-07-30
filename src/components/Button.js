@@ -8,9 +8,14 @@ const StyledButton = styled.button`
   padding: 14px 14px;
   border-radius: 32px;
   align-self: center;
-  color: white;
+  color: ${props => props.theme.colors.lightGrey};
   font-family: ${props => props.theme.fonts.montserrat};
   font-size: 20px;
+
+  & a {
+    color: ${props => props.theme.colors.lightGrey};
+    text-decoration: none;
+  }
 
   &:hover {
     background: transparent;

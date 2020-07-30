@@ -4,6 +4,7 @@ import { Link } from 'gatsby'
 
 import Layout from '../layouts/Layout'
 import Button from '../components/Button'
+import MigraineRecord from '../components/MigraineRecord'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
@@ -50,7 +51,7 @@ const StyledNoMigraine = styled.h3`
 `
 
 const Dashboard = () => {
-  const existingRecords = false;
+  const existingRecords = true;
 
   let records = (
     <div>
@@ -64,7 +65,7 @@ const Dashboard = () => {
     records = (
       <div>
         <StyledTitle3>RECORDS</StyledTitle3>
-        <p>Write records here</p>
+        <MigraineRecord/>
       </div>
     )
   }
@@ -73,7 +74,7 @@ const Dashboard = () => {
     <Layout>
       <StyledTitle1>DASHBOARD</StyledTitle1>
       <StyledNewCurrentMigraine>
-        <Button><FontAwesomeIcon icon={faPlus} />New migraine</Button>
+        <Button><Link to="/new-migraine/"><FontAwesomeIcon icon={faPlus} />New migraine</Link></Button>
         <StyledCurrentMigraine>
           <h3>CURRENT MIGRAINE</h3>
           <p>No current migraine</p>
