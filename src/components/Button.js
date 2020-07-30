@@ -7,14 +7,13 @@ const StyledButton = styled.button`
   width: 220px;
   padding: 14px 14px;
   border-radius: 32px;
-  margin-top: 30px;
   align-self: center;
   color: white;
   font-family: ${props => props.theme.fonts.montserrat};
   font-size: 20px;
 
   &:hover {
-    background: ${props => props.theme.colors.darkBlue};
+    background: transparent;
     border: 1px solid ${props => props.theme.colors.orange};
   }
 

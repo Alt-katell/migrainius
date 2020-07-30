@@ -39,7 +39,7 @@ const StyledInput = styled.input`
   }
 
   &:last-of-type {
-    margin-bottom: 0;
+    margin-bottom: 30px;
   }
 `
 

@@ -48,6 +48,7 @@ const StyledP = styled.p`
   color: ${props => props.theme.colors.darkGrey};
   font-size: 14px;
   text-align: center;
+  margin-bottom: 30px;
 
   & a {
     color: ${props => props.theme.colors.darkGrey};
