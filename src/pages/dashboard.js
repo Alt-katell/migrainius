@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 
 import Layout from '../layouts/Layout'
 import Button from '../components/Button'
@@ -42,6 +43,10 @@ const StyledTitle3 = styled.h3`
 const StyledNoMigraine = styled.h3`
   color: ${props => props.theme.colors.lightGrey};
   font-weight: normal;
+
+  & a {
+    color: ${props => props.theme.colors.lightGrey};
+  }
 `
 
 const Dashboard = () => {
@@ -51,7 +56,7 @@ const Dashboard = () => {
     <div>
       <StyledTitle3>RECORDS</StyledTitle3>
       <StyledNoMigraine>You did not record any migraine yet</StyledNoMigraine>
-      <StyledNoMigraine><FontAwesomeIcon icon={faPlus} style={{marginRight: "8px"}} /> Record a new migraine now</StyledNoMigraine>
+      <StyledNoMigraine><Link to="/new-migraine/"><FontAwesomeIcon icon={faPlus} style={{marginRight: "8px"}} /> Record a new migraine now</Link></StyledNoMigraine>
     </div>
   )
 
