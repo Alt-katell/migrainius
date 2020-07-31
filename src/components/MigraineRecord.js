@@ -14,6 +14,23 @@ const StyledDate = styled.p`
   margin-right: 24px;
 `
 
+const StyledTable = styled.table`
+  margin-bottom: 70px;
+`
+
+const StyledHeader = styled.th`
+  text-transform: uppercase;
+  color: ${props => props.theme.colors.green};
+  font-size: 14px;
+  padding: 0 12px 4px 12px;
+`
+
+const StyledData = styled.td`
+  color: ${props => props.theme.colors.lightGrey};
+  text-align: center;
+  padding: 0 12px 4px 12px;
+`
+
 const MigraineRecord = () => {
   return (
     <div>
@@ -21,52 +38,52 @@ const MigraineRecord = () => {
         <StyledDate>Monday, 20</StyledDate>
         <p>3 hours 17 minutes</p>
       </StyledDateDuration>
-      <table>
+      <StyledTable>
         <thead>
           <tr>
-            <th>Start</th>
-            <th>End</th>
-            <th>Medication</th>
-            <th>Medication efficiency</th>
-            <th>Activity when started</th>
-            <th>Hypoglycemia</th>
-            <th>Stress</th>
-            <th>Anger</th>
-            <th>Sport or yoga</th>
-            <th>Hours of sleep</th>
-            <th>Intensity</th>
+            <StyledHeader>Start</StyledHeader>
+            <StyledHeader>End</StyledHeader>
+            <StyledHeader>Medication</StyledHeader>
+            <StyledHeader>Medication efficiency</StyledHeader>
+            <StyledHeader>Activity when started</StyledHeader>
+            <StyledHeader>Hypoglycemia</StyledHeader>
+            <StyledHeader>Stress</StyledHeader>
+            <StyledHeader>Anger</StyledHeader>
+            <StyledHeader>Sport or yoga</StyledHeader>
+            <StyledHeader>Hours of sleep</StyledHeader>
+            <StyledHeader>Intensity</StyledHeader>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>
+            <StyledData>
               20<br/>
               Monday<br/>
               17:00
-            </td>
-            <td>
+            </StyledData>
+            <StyledData>
               20<br/>
               Monday<br/>
               20:17
-            </td>
-            <td>
+            </StyledData>
+            <StyledData>
               Yes<br/>
               1 Ketum
-            </td>
-            <td>Yes</td>
-            <td>TV</td>
-            <td>No</td>
-            <td>Yes</td>
-            <td>No</td>
-            <td>Yoga</td>
-            <td>
+            </StyledData>
+            <StyledData>Yes</StyledData>
+            <StyledData>TV</StyledData>
+            <StyledData>No</StyledData>
+            <StyledData>Yes</StyledData>
+            <StyledData>No</StyledData>
+            <StyledData>Yoga</StyledData>
+            <StyledData>
               7 hours<br/>
               30 minutes
-            </td>
-            <td>7/10</td>
+            </StyledData>
+            <StyledData>7/10</StyledData>
           </tr>
         </tbody>
-      </table>
+      </StyledTable>
     </div>
   )
 }
