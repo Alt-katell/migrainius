@@ -23,6 +23,7 @@ const StyledHeader = styled.th`
   color: ${props => props.theme.colors.green};
   font-size: 14px;
   padding: 0 12px 4px 12px;
+  vertical-align: top;
 `
 
 const StyledData = styled.td`
