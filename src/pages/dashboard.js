@@ -66,6 +66,8 @@ const Dashboard = () => {
       <div>
         <StyledTitle3>RECORDS</StyledTitle3>
         <MigraineRecord/>
+        <MigraineRecord/>
+        <MigraineRecord/>
       </div>
     )
   }
