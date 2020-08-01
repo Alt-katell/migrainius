@@ -58,7 +58,7 @@ const signUp = () => {
           <StyledInput type="text" name="name" placeholder="Name" required />
           <StyledInput type="email" name="email" placeholder="Email" required />
           <StyledInput type="password" name="password" placeholder="Password" required />
-          <Button><FontAwesomeIcon icon={faPaperPlane} />Sign up</Button>
+          <Button background="orange"><FontAwesomeIcon icon={faPaperPlane} />Sign up</Button>
         </StyledForm>
         <StyledP>Already have an account? <Link to="/log-in/">Log in</Link></StyledP>
       </StyledBackground>

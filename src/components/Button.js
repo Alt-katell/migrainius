@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledButton = styled.button`
-  background: ${props => props.theme.colors.orange};
+  background: ${props => props.background === "transparent" ? "transparent" : props.theme.colors[props.background]};
   border: 1px solid ${props => props.theme.colors.orange};
   width: 220px;
   padding: 14px 14px;
@@ -27,9 +27,9 @@ const StyledButton = styled.button`
   }
 `
 
-const Button = ({children}) => {
+const Button = ({children, background}) => {
   return (
-    <StyledButton>
+    <StyledButton background={background}>
       {children}
     </StyledButton>
   )

@@ -63,7 +63,7 @@ const logIn = () => {
           <StyledInput type="email" name="email" placeholder="Email" required />
           <StyledInput type="password" name="password" placeholder="Password" required />
           <StyledP style={{alignSelf: "flex-start"}}><Link to="/reset-password/">Forgot your password?</Link></StyledP>
-          <Button><FontAwesomeIcon icon={faPaperPlane} />Log in</Button>
+          <Button background="orange"><FontAwesomeIcon icon={faPaperPlane} />Log in</Button>
         </StyledForm>
         <StyledP>Don't have an account yet? <Link to="/sign-up/">Sign up</Link></StyledP>
       </StyledBackground>
