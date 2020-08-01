@@ -49,7 +49,7 @@ const resetPassword = () => {
       <StyledBackground>
         <StyledForm>
           <StyledInput type="email" name="email" placeholder="Email" required />
-          <Button background="orange"><FontAwesomeIcon icon={faPaperPlane} />Reset</Button>
+          <Button background="orange" hoverBackground="transparent"><FontAwesomeIcon icon={faPaperPlane} />Reset</Button>
         </StyledForm>
       </StyledBackground>
     </Layout>

@@ -76,7 +76,7 @@ const Dashboard = () => {
     <Layout>
       <StyledTitle1>DASHBOARD</StyledTitle1>
       <StyledNewCurrentMigraine>
-        <Button background="orange"><Link to="/new-migraine/"><FontAwesomeIcon icon={faPlus} />New migraine</Link></Button>
+        <Button background="orange" hoverBackground="transparent"><Link to="/new-migraine/"><FontAwesomeIcon icon={faPlus} />New migraine</Link></Button>
         <StyledCurrentMigraine>
           <h3>CURRENT MIGRAINE</h3>
           <p>No current migraine</p>

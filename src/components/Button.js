@@ -18,7 +18,7 @@ const StyledButton = styled.button`
   }
 
   &:hover {
-    background: transparent;
+    background: ${props => props.hoverBackground === "transparent" ? "transparent" : props.theme.colors[props.hoverBackground]};
     border: 1px solid ${props => props.theme.colors.orange};
   }
 
@@ -27,9 +27,9 @@ const StyledButton = styled.button`
   }
 `
 
-const Button = ({children, background}) => {
+const Button = ({children, background, hoverBackground}) => {
   return (
-    <StyledButton background={background}>
+    <StyledButton background={background} hoverBackground={hoverBackground}>
       {children}
     </StyledButton>
   )

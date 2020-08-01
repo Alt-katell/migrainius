@@ -63,7 +63,7 @@ const NewMigraine = () => {
   return (
     <Layout>
       <StyledTitle1>NEW MIGRAINE</StyledTitle1>
-      <Button background="transparent"><Link to="/dashboard/"><FontAwesomeIcon icon={faTimes} />Cancel</Link></Button>
+      <Button background="transparent" hoverBackground="orange"><Link to="/dashboard/"><FontAwesomeIcon icon={faTimes} />Cancel</Link></Button>
 
       <form>
         <StyledCategory>
