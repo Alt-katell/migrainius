@@ -2,6 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserAstronaut } from '@fortawesome/free-solid-svg-icons'
+
 import logo from './logo.svg'
 
 const StyledHeader = styled.header`
@@ -34,6 +37,10 @@ const StyledLogo = styled.img`
   height: auto;
 `
 
+const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+  margin-left: 8px;
+`
+
 const Navbar = () => {
   return (
     <StyledHeader>
@@ -44,13 +51,16 @@ const Navbar = () => {
             <StyledLink to="/" activeClassName="active">About</StyledLink>
           </li>
           <li>
-            <StyledLink to="/dashboard/" activeClassName="active">Dashboard</StyledLink>
-          </li>
-          <li>
             <StyledLink to="/sign-up/" activeClassName="active">Sign up</StyledLink>
           </li>
           <li>
             <StyledLink to="/log-in/" activeClassName="active">Log in</StyledLink>
+          </li>
+          <li>
+            <StyledLink to="/dashboard/" activeClassName="active">Dashboard</StyledLink>
+          </li>
+          <li>
+            <StyledLink to="/account/" activeClassName="active">Account<StyledFontAwesomeIcon icon={faUserAstronaut} /></StyledLink>
           </li>
         </StyledUl>
       </nav>
