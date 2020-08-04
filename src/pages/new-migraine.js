@@ -7,6 +7,7 @@ import Button from '../components/Button'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
 
 const StyledTitleButton = styled.div`
   display: flex;
@@ -20,6 +21,11 @@ const StyledTitleButton = styled.div`
 const StyledTitle1 = styled.h1`
   font-size: 30px;
   color: ${props => props.theme.colors.mediumBlue};
+`
+
+const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
 `
 
 const StyledCategory = styled.div`
@@ -68,7 +74,6 @@ const StyledQuestionRight = styled.div`
 `
 
 const StyledQuestionGroup = styled.div`
-
 `
 
 const StyledQuestion = styled.div`
@@ -131,7 +136,7 @@ const NewMigraine = () => {
         <Link to="/dashboard/"><Button background="transparent" hoverBackground="orange"><FontAwesomeIcon icon={faTimes} />Cancel</Button></Link>
       </StyledTitleButton>
 
-      <form>
+      <StyledForm>
         <StyledCategory>
           <StyledCategoryTitle>Hours</StyledCategoryTitle>
 
@@ -306,7 +311,9 @@ const NewMigraine = () => {
             </StyledQuestionLeft>
           </StyledCategoryQuestions>
         </StyledCategory>
-      </form>
+
+        <Button background="orange" hoverBackground="transparent"><FontAwesomeIcon icon={faCheck} />Submit</Button>
+      </StyledForm>
     </Layout>
   )
 }
