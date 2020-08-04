@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const StyledDateDuration = styled.div`
   color: ${props => props.theme.colors.mediumBlue};
   font-family: ${props => props.theme.fonts.roboto};
-  font-weight: 300;
+  font-weight: bold;
   font-size: 20px;
   display: flex;
 `

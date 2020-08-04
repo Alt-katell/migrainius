@@ -44,7 +44,7 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
 const Navbar = () => {
   return (
     <StyledHeader>
-      <StyledLogo src={logo} alt="Migrainius Logo"/>
+      <Link to="/"><StyledLogo src={logo} alt="Migrainius Logo"/></Link>
       <nav>
         <StyledUl>
           <li>
