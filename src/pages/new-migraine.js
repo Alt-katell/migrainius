@@ -8,6 +8,15 @@ import Button from '../components/Button'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
+const StyledTitleButton = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  & button {
+    align-self: flex-end;
+  }
+`
+
 const StyledTitle1 = styled.h1`
   font-size: 30px;
   color: ${props => props.theme.colors.mediumBlue};
@@ -32,15 +41,34 @@ const StyledCategoryQuestions = styled.div`
   &:last-child {
     margin-right: 0;
   }
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
 `
 
-const StyledCategorySubQuestions = styled.div`
+const StyledQuestionLeft = styled.div`
+  width: 50%;
   display: flex;
   flex-direction: column;
 
   & div {
     margin-bottom: 20px;
   }
+`
+
+const StyledQuestionRight = styled.div`
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+
+  & div {
+    margin-bottom: 20px;
+  }
+`
+
+const StyledQuestionGroup = styled.div`
+
 `
 
 const StyledQuestion = styled.div`
@@ -51,7 +79,43 @@ const StyledQuestionQuestion = styled.p`
 `
 
 const StyledInput = styled.input`
-  margin-right: 6px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0 6px 0 0;
+  background: transparent;
+  border: 1px solid ${props => props.theme.colors.mediumBlue};
+  border-radius: 5px;
+  padding: 6px 8px;
+  color: ${props => props.theme.colors.lightGrey};
+  font-family: inherit;
+
+  &[type="radio"] {
+    height: 17px;
+    width: 16px;
+    border-radius: 50%;
+  }
+
+  &:checked {
+    background: ${props => props.theme.colors.mediumBlue};
+  }
+
+  &[type="text"] {
+    margin-right: 32px;
+  }
+
+  &[type="number"] {
+    margin-right: 32px;
+    width: 40px;
+  }
+`
+
+const StyledSelect = styled.select`
+  border: 1px solid ${props => props.theme.colors.mediumBlue};
+  background: transparent;
+  border-radius: 5px;
+  padding: 6px 8px;
+  color: ${props => props.theme.colors.lightGrey};
 `
 
 const StyledLabel = styled.label`
@@ -62,34 +126,40 @@ const StyledLabel = styled.label`
 const NewMigraine = () => {
   return (
     <Layout>
-      <StyledTitle1>NEW MIGRAINE</StyledTitle1>
-      <Button background="transparent" hoverBackground="orange"><Link to="/dashboard/"><FontAwesomeIcon icon={faTimes} />Cancel</Link></Button>
+      <StyledTitleButton>
+        <StyledTitle1>NEW MIGRAINE</StyledTitle1>
+        <Button background="transparent" hoverBackground="orange"><Link to="/dashboard/"><FontAwesomeIcon icon={faTimes} />Cancel</Link></Button>
+      </StyledTitleButton>
 
       <form>
         <StyledCategory>
           <StyledCategoryTitle>Hours</StyledCategoryTitle>
 
           <StyledCategoryQuestions>
-            <StyledQuestion>
-            <StyledQuestionQuestion>When did your migraine start?</StyledQuestionQuestion>
-              <StyledInput type="radio" id="now" name="start" value="now"/>
-              <StyledLabel for="now">Now</StyledLabel>
+            <StyledQuestionLeft>
+              <StyledQuestionGroup>
+                <StyledQuestionQuestion>When did your migraine start?</StyledQuestionQuestion>
+                  <StyledInput type="radio" id="now" name="start" value="now"/>
+                  <StyledLabel htmlFor="now">Now</StyledLabel>
 
-              <StyledInput type="radio" id="another-moment" name="start" value="another-moment"/>
-              <StyledLabel for="another-moment">Another moment</StyledLabel>
-            </StyledQuestion>
+                  <StyledInput type="radio" id="another-moment" name="start" value="another-moment"/>
+                  <StyledLabel htmlFor="another-moment">Another moment</StyledLabel>
+              </StyledQuestionGroup>
+            </StyledQuestionLeft>
 
-            <StyledQuestion>
-              <StyledQuestionQuestion>When did your migraine end?</StyledQuestionQuestion>
-              <StyledInput type="radio" id="now" name="end" value="now"/>
-              <StyledLabel for="now">Now</StyledLabel>
+            <StyledQuestionRight>
+              <StyledQuestionGroup>
+                <StyledQuestionQuestion>When did your migraine end?</StyledQuestionQuestion>
+                <StyledInput type="radio" id="now" name="end" value="now"/>
+                <StyledLabel htmlFor="now">Now</StyledLabel>
 
-              <StyledInput type="radio" id="another-moment" name="end" value="another-moment"/>
-              <StyledLabel for="another-moment">Another moment</StyledLabel>
+                <StyledInput type="radio" id="another-moment" name="end" value="another-moment"/>
+                <StyledLabel htmlFor="another-moment">Another moment</StyledLabel>
 
-              <StyledInput type="radio" id="ongoing" name="end" value="ongoing"/>
-              <StyledLabel for="ongoing">Ongoing</StyledLabel>
-            </StyledQuestion>
+                <StyledInput type="radio" id="ongoing" name="end" value="ongoing"/>
+                <StyledLabel htmlFor="ongoing">Ongoing</StyledLabel>
+              </StyledQuestionGroup>
+            </StyledQuestionRight>
           </StyledCategoryQuestions>
         </StyledCategory>
 
@@ -98,55 +168,144 @@ const NewMigraine = () => {
           <StyledCategoryTitle>Medication</StyledCategoryTitle>
 
           <StyledCategoryQuestions>
-            <StyledQuestion>
-              <StyledQuestionQuestion>Did you take any medication?</StyledQuestionQuestion>
-              <StyledInput type="radio" id="yes" name="medication" value="yes"/>
-              <StyledLabel for="yes">Yes</StyledLabel>
+            <StyledQuestionLeft>
+              <StyledQuestionGroup>
+                <StyledQuestionQuestion>Did you take any medication?</StyledQuestionQuestion>
+                <StyledInput type="radio" id="yes" name="medication" value="yes"/>
+                <StyledLabel htmlFor="yes">Yes</StyledLabel>
 
-              <StyledInput type="radio" id="no" name="medication" value="no"/>
-              <StyledLabel for="no">No</StyledLabel>
-            </StyledQuestion>
+                <StyledInput type="radio" id="no" name="medication" value="no"/>
+                <StyledLabel htmlFor="no">No</StyledLabel>
+              </StyledQuestionGroup>
+            </StyledQuestionLeft>
 
-            <StyledCategorySubQuestions>
-              <StyledQuestion>
+
+            <StyledQuestionRight>
+              <StyledQuestionGroup>
                 <StyledQuestionQuestion>What is the name of the medication and what quantity did you take?</StyledQuestionQuestion>
-                <StyledLabel for="medication">Name</StyledLabel>
+                <StyledLabel htmlFor="medication">Name</StyledLabel>
                 <StyledInput type="text" name="medication"/>
 
-                <StyledLabel for="quantity">Quantity</StyledLabel>
-                <StyledInput type="number" id="quantity" name="quantity" value="no" step="1" value="1"/>
-              </StyledQuestion>
+                <StyledLabel htmlFor="quantity">Quantity</StyledLabel>
+                <StyledInput type="number" name="quantity"/>
+              </StyledQuestionGroup>
 
-              <StyledQuestion>
+              <StyledQuestionGroup>
                 <StyledQuestionQuestion>Was the medication efficient?</StyledQuestionQuestion>
                 <StyledInput type="radio" id="yes" name="efficiency" value="yes"/>
-                <StyledLabel for="efficiency">Yes</StyledLabel>
+                <StyledLabel htmlFor="efficiency">Yes</StyledLabel>
 
                 <StyledInput type="radio" id="no" name="efficiency" value="no"/>
-                <StyledLabel for="efficiency">No</StyledLabel>
-              </StyledQuestion>
-            </StyledCategorySubQuestions>
+                <StyledLabel htmlFor="efficiency">No</StyledLabel>
+              </StyledQuestionGroup>
+            </StyledQuestionRight>
           </StyledCategoryQuestions>
         </StyledCategory>
 
+        <StyledCategory>
+          <StyledCategoryTitle>Activity when it started</StyledCategoryTitle>
 
-        <StyledCategoryTitle>Activity when it started</StyledCategoryTitle>
+          <StyledCategoryQuestions>
+            <StyledQuestionLeft>
+              <StyledQuestionGroup>
+                <StyledQuestionQuestion>What were you doing when it started?</StyledQuestionQuestion>
+                <StyledLabel htmlFor="activity">Activity</StyledLabel>
+                <StyledInput type="text" name="activity"/>
+              </StyledQuestionGroup>
+            </StyledQuestionLeft>
+          </StyledCategoryQuestions>
+        </StyledCategory>
 
-        <StyledQuestionQuestion>What were you doing when it started?</StyledQuestionQuestion>
-        <StyledLabel for="activity">Activity</StyledLabel>
-        <StyledInput type="text" name="activity"/>
+        <StyledCategory>
+          <StyledCategoryTitle>Events during this day</StyledCategoryTitle>
 
+          <StyledCategoryQuestions>
+            <StyledQuestionLeft>
+              <StyledQuestionGroup>
+                <StyledQuestionQuestion>Have you been hypoglycemic or very hungry today?</StyledQuestionQuestion>
+                <StyledInput type="radio" id="yes" name="hypoglycemic" value="yes"/>
+                <StyledLabel htmlFor="hypoglycemic">Yes</StyledLabel>
 
+                <StyledInput type="radio" id="no" name="hypoglycemic" value="no"/>
+                <StyledLabel htmlFor="hypoglycemic">No</StyledLabel>
+              </StyledQuestionGroup>
 
-        <StyledCategoryTitle>Events during this day</StyledCategoryTitle>
+              <StyledQuestionGroup>
+                <StyledQuestionQuestion>Did you do any physical activity or yoga today?</StyledQuestionQuestion>
+                <StyledInput type="radio" id="sport" name="physical-activity" value="sport"/>
+                <StyledLabel htmlFor="physical-activity">Sport</StyledLabel>
 
-        <StyledQuestionQuestion>Have you been hypoglycemic or very hungry today?</StyledQuestionQuestion>
-        <StyledInput type="radio" id="yes" name="efficiency" value="yes"/>
-        <StyledLabel for="efficiency">Yes</StyledLabel>
+                <StyledInput type="radio" id="yoga" name="physical-activity" value="yoga"/>
+                <StyledLabel htmlFor="efficiency">Yoga</StyledLabel>
 
-        <StyledInput type="radio" id="no" name="efficiency" value="no"/>
-        <StyledLabel for="efficiency">No</StyledLabel>
+                <StyledInput type="radio" id="both" name="physical-activity" value="both"/>
+                <StyledLabel htmlFor="physical-activity">Both</StyledLabel>
+              </StyledQuestionGroup>
+            </StyledQuestionLeft>
 
+            <StyledQuestionRight>
+              <StyledQuestionGroup>
+                <StyledQuestionQuestion>Have you been stressed today?</StyledQuestionQuestion>
+                <StyledInput type="radio" id="yes" name="stressed" value="yes"/>
+                <StyledLabel htmlFor="stressed">Yes</StyledLabel>
+
+                <StyledInput type="radio" id="no" name="stressed" value="no"/>
+                <StyledLabel htmlFor="stressed">No</StyledLabel>
+              </StyledQuestionGroup>
+
+              <StyledQuestionGroup>
+                <StyledQuestionQuestion>Have you been angry today?</StyledQuestionQuestion>
+                <StyledInput type="radio" id="yes" name="angry" value="yes"/>
+                <StyledLabel htmlFor="angry">Yes</StyledLabel>
+
+                <StyledInput type="radio" id="no" name="angry" value="no"/>
+                <StyledLabel htmlFor="angry">No</StyledLabel>
+              </StyledQuestionGroup>
+            </StyledQuestionRight>
+          </StyledCategoryQuestions>
+        </StyledCategory>
+
+        <StyledCategory>
+          <StyledCategoryTitle>Hours of sleep</StyledCategoryTitle>
+
+          <StyledCategoryQuestions>
+            <StyledQuestionLeft>
+              <StyledQuestionGroup>
+                <StyledQuestionQuestion>How many hours did you sleep last night?</StyledQuestionQuestion>
+                <StyledLabel htmlFor="hours">Hours</StyledLabel>
+                <StyledInput type="number" name="hours"/>
+
+                <StyledLabel htmlFor="minutes">Minutes</StyledLabel>
+                <StyledInput type="number" name="minutes"/>
+              </StyledQuestionGroup>
+            </StyledQuestionLeft>
+          </StyledCategoryQuestions>
+        </StyledCategory>
+
+        <StyledCategory>
+          <StyledCategoryTitle>Intensity</StyledCategoryTitle>
+
+          <StyledCategoryQuestions>
+            <StyledQuestionLeft>
+              <StyledQuestionGroup>
+                <StyledQuestionQuestion>On a scale from 1 to 10 (1 = not very painful, 10 =  extremely painful), what is the intensity of this migraine?</StyledQuestionQuestion>
+                <StyledLabel htmlFor="intensity">Intensity</StyledLabel>
+                <StyledSelect name="intensity">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                </StyledSelect>
+              </StyledQuestionGroup>
+            </StyledQuestionLeft>
+          </StyledCategoryQuestions>
+        </StyledCategory>
       </form>
     </Layout>
   )
