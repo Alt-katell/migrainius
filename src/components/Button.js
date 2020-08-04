@@ -11,6 +11,7 @@ const StyledButton = styled.button`
   color: ${props => props.theme.colors.lightGrey};
   font-family: ${props => props.theme.fonts.montserrat};
   font-size: 20px;
+  cursor: pointer;
 
   & a {
     color: ${props => props.theme.colors.lightGrey};

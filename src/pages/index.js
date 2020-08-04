@@ -14,6 +14,10 @@ const StyledBanner = styled.div`
   justify-content: space-between;
   margin: 0 60px 200px 60px;
 
+  & a {
+    align-self: center;
+  }
+
   @media (max-width: 1024px) {
     flex-direction: column-reverse;
     margin: 0 30px 100px 30px;
@@ -61,19 +65,15 @@ const StyledHomeButton = styled.button`
   padding: 14px 14px;
   border-radius: 32px;
   margin-top: 30px;
-  align-self: center;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: ${props => props.theme.fonts.montserrat};
+  color: white;
 
   &:hover {
     background: ${props => props.theme.colors.background};
     border: 1px solid ${props => props.theme.colors.darkBlue};
-  }
-
-  & a {
-    color: white;
-    text-decoration: none;
-    font-size: 20px;
-    font-family: ${props => props.theme.fonts.montserrat};
-    font-weight: bold;
   }
 `
 
@@ -134,7 +134,7 @@ export default function Home() {
             <p>IT’S TIME TO FIGHT BACK!</p>
             <p>Start recording your migraines to better control them</p>
           </div>
-          <StyledHomeButton><Link to="/sign-up/">Start Now</Link></StyledHomeButton>
+          <Link to="/sign-up/"><StyledHomeButton>Start Now</StyledHomeButton></Link>
         </StyledTextPart>
 
         <div className="img-part">

@@ -12,7 +12,7 @@ const StyledTitleButton = styled.div`
   display: flex;
   flex-direction: column;
 
-  & button {
+  & a {
     align-self: flex-end;
   }
 `
@@ -128,7 +128,7 @@ const NewMigraine = () => {
     <Layout>
       <StyledTitleButton>
         <StyledTitle1>NEW MIGRAINE</StyledTitle1>
-        <Button background="transparent" hoverBackground="orange"><Link to="/dashboard/"><FontAwesomeIcon icon={faTimes} />Cancel</Link></Button>
+        <Link to="/dashboard/"><Button background="transparent" hoverBackground="orange"><FontAwesomeIcon icon={faTimes} />Cancel</Button></Link>
       </StyledTitleButton>
 
       <form>
