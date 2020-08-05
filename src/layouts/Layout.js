@@ -4,7 +4,7 @@ import { createGlobalStyle } from 'styled-components'
 
 import Theme from './Theme'
 
-import Navbar from '../components/Navbar'
+import Navbar from '../components/navigation/Navbar'
 import Footer from '../components/Footer'
 
 const GlobalStyle = createGlobalStyle`
