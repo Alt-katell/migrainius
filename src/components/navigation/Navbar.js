@@ -16,20 +16,13 @@ const StyledHeader = styled.header`
   margin-bottom: 50px;
 
   @media (max-width: 1024px) {
-    flex-direction: row-reverse;
-    align-items: flex-start;
+    display: none;
   }
 `
 
 const StyledUl = styled.ul`
   list-style: none;
   display: flex;
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    padding-left: 0;
-
-  }
 `
 
 const StyledLogo = styled.img`

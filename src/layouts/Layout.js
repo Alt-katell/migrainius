@@ -5,6 +5,7 @@ import { createGlobalStyle } from 'styled-components'
 import Theme from './Theme'
 
 import Navbar from '../components/navigation/Navbar'
+import SideDrawer from '../components/navigation/SideDrawer'
 import Footer from '../components/Footer'
 
 const GlobalStyle = createGlobalStyle`
@@ -34,6 +35,7 @@ const Layout = ({children, data}) => {
       <Theme>
         <GlobalStyle/>
         <Navbar />
+        <SideDrawer />
         {children}
         <Footer />
       </Theme>
