@@ -14,11 +14,22 @@ const StyledHeader = styled.header`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 50px;
+
+  @media (max-width: 1024px) {
+    flex-direction: row-reverse;
+    align-items: flex-start;
+  }
 `
 
 const StyledUl = styled.ul`
   list-style: none;
   display: flex;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+    padding-left: 0;
+
+  }
 `
 
 const StyledLogo = styled.img`
