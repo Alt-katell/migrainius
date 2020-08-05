@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { createGlobalStyle } from 'styled-components'
 
@@ -29,13 +29,25 @@ const Container = styled.div`
 `
 
 const Layout = ({children, data}) => {
+  const [sideDrawerIsVisible, setSideDrawerIsVisible] = useState(false);
+
+  const sideDrawerClosedHandler = () => {
+    setSideDrawerIsVisible(false);
+  };
+
+  const sideDrawerToggleHandler = () => {
+    setSideDrawerIsVisible(!sideDrawerIsVisible);
+  };
+
   return (
     <div>
       <Container>
       <Theme>
         <GlobalStyle/>
         <Navbar />
-        <SideDrawer />
+        <SideDrawer
+          open={sideDrawerIsVisible}
+          closed={sideDrawerClosedHandler}/>
         {children}
         <Footer />
       </Theme>

@@ -13,6 +13,6 @@ const StyledBackdrop = styled.div`
 
 const Backdrop = (props) => (
     props.show ? <StyledBackdrop onClick={props.clicked}></StyledBackdrop> : null
-);
+)
 
 export default Backdrop

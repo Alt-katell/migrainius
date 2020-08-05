@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUserAstronaut } from '@fortawesome/free-solid-svg-icons'
+import { faPowerOff } from '@fortawesome/free-solid-svg-icons'
 
 import NavigationItem from './NavigationItem'
 
@@ -44,7 +44,8 @@ const Navbar = () => {
           <NavigationItem link="/sign-up/">Sign up</NavigationItem>
           <NavigationItem link="/log-in/">Log in</NavigationItem>
           <NavigationItem link="/dashboard/">Dashboard</NavigationItem>
-          <NavigationItem link="/account/">Account<StyledFontAwesomeIcon icon={faUserAstronaut} /></NavigationItem>
+          <NavigationItem link="/account/">Account</NavigationItem>
+          <NavigationItem link="/">Log out<StyledFontAwesomeIcon icon={faPowerOff} /></NavigationItem>
         </StyledUl>
       </nav>
     </StyledHeader>

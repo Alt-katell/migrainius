@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons'
 import { faGithubAlt } from '@fortawesome/free-brands-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faUserAstronaut } from '@fortawesome/free-solid-svg-icons'
 
 const StyledFooter = styled.footer`
   display: flex;
@@ -44,10 +45,14 @@ const StyledA = styled.a`
   }
 `
 
+const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+  margin-right: 8px;
+`
+
 const Footer = () => {
   return (
     <StyledFooter>
-      <p>Hi, I'm Katell Goaër and I developed this demo app</p>
+      <p><StyledFontAwesomeIcon icon={faUserAstronaut} />Hi, I'm Katell Goaër and I developed this demo app</p>
       <p>Contact me</p>
       <StyledUl>
         <li><StyledA href="https://www.linkedin.com/in/katellgoaer/"><FontAwesomeIcon icon={faLinkedinIn} /></StyledA></li>
