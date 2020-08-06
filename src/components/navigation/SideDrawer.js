@@ -13,7 +13,7 @@ import logo from './logo.svg'
 
 const StyledSideDrawer = styled.div`
   position: fixed;
-  width: 280px;
+  width: 220px;
   max-width: 70%;
   height: 100%;
   left: 0;
