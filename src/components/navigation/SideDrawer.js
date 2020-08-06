@@ -41,7 +41,6 @@ const StyledBurgerIcon = styled(FontAwesomeIcon)`
   color: ${props => props.theme.colors.green};
   font-size: 32px;
   margin-top: 32px;
-  margin-left: 16px;
 `
 
 const StyledUl = styled.ul`
