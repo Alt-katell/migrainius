@@ -35,6 +35,10 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   margin-bottom: 50px;
   align-items: flex-start;
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
 `
 
 const StyledBurgerIcon = styled(FontAwesomeIcon)`
