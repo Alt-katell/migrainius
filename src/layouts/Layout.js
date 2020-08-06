@@ -47,7 +47,8 @@ const Layout = ({children, data}) => {
         <Navbar />
         <SideDrawer
           open={sideDrawerIsVisible}
-          closed={sideDrawerClosedHandler}/>
+          closed={sideDrawerClosedHandler}
+          drawerToggleClicked={sideDrawerToggleHandler} />
         {children}
         <Footer />
       </Theme>

@@ -4,6 +4,7 @@ import { Link } from 'gatsby'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 
 import NavigationItem from './NavigationItem'
 import Backdrop from './Backdrop'
@@ -22,6 +23,7 @@ const StyledSideDrawer = styled.div`
   padding: 32px 16px;
   box-sizing: border-box;
   transition: transform 0.3s ease-out;
+  transform: ${props => props.show ? "translateX(0)" : "translateX(-100%)"};
 
   @media (min-width: 1024px) {
     display: none;
@@ -32,12 +34,14 @@ const StyledHeader = styled.header`
   display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
-  flex-direction: row-reverse;
   align-items: flex-start;
+`
 
-  @media (min-width: 1024px) {
-    display: none;
-  }
+const StyledBurgerIcon = styled(FontAwesomeIcon)`
+  color: ${props => props.theme.colors.green};
+  font-size: 32px;
+  margin-top: 32px;
+  margin-left: 16px;
 `
 
 const StyledUl = styled.ul`
@@ -52,17 +56,18 @@ const StyledLogo = styled.img`
   height: auto;
 `
 
-const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+const StyledOffIcon = styled(FontAwesomeIcon)`
   margin-left: 8px;
 `
 
 const SideDrawer = (props) => {
   return (
     <div>
-      <Backdrop show={props.open} clicked={props.closed}/>
+      <Backdrop show={props.open ? true : false} clicked={props.closed} />
       <StyledHeader>
+        <StyledBurgerIcon icon={faBars} onClick={props.drawerToggleClicked}/>
         <Link to="/"><StyledLogo src={logo} alt="Migrainius Logo"/></Link>
-        <StyledSideDrawer>
+        <StyledSideDrawer show={props.open} >
           <nav>
             <StyledUl>
               <NavigationItem link="/">About</NavigationItem>
@@ -70,7 +75,7 @@ const SideDrawer = (props) => {
               <NavigationItem link="/log-in/">Log in</NavigationItem>
               <NavigationItem link="/dashboard/">Dashboard</NavigationItem>
               <NavigationItem link="/account/">Account</NavigationItem>
-              <NavigationItem link="/">Log out<StyledFontAwesomeIcon icon={faPowerOff} /></NavigationItem>
+              <NavigationItem link="/">Log out<StyledOffIcon icon={faPowerOff} /></NavigationItem>
             </StyledUl>
           </nav>
         </StyledSideDrawer>
