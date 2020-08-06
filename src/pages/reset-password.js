@@ -19,6 +19,11 @@ const StyledBackground = styled.div`
   padding: 80px 40px;
   border-radius: 15px;
   margin: 0 auto;
+
+  @media (max-width: 1024px) {
+    width: 250px;
+    padding: 60px 20px;
+  }
 `
 
 const StyledInput = styled.input`
