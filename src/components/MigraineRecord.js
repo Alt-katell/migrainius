@@ -1,5 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
 
 const StyledDateDuration = styled.div`
   color: ${props => props.theme.colors.mediumBlue};
@@ -7,6 +10,15 @@ const StyledDateDuration = styled.div`
   font-weight: bold;
   font-size: 20px;
   display: flex;
+  cursor: pointer;
+`
+
+const StyledChevronIcon = styled(FontAwesomeIcon)`
+  margin-left: 16px;
+  transition: transform 0.6s ease;
+  ${props => props.active === "isActive" && `
+    transform: rotate(180deg);
+  `}
 `
 
 const StyledDate = styled.p`
@@ -15,7 +27,11 @@ const StyledDate = styled.p`
 `
 
 const StyledTable = styled.table`
-  margin-bottom: 70px;
+  margin-bottom: 40px;
+  display: none;
+  ${props => props.active === "isActive" && `
+    display: block;
+  `}
 `
 
 const StyledHeader = styled.th`
@@ -33,13 +49,19 @@ const StyledData = styled.td`
 `
 
 const MigraineRecord = () => {
+  const [active, setActive] = useState(false)
+
+  const toggleActive = () => {
+    setActive(!active)
+  }
+
   return (
     <div>
-      <StyledDateDuration>
+      <StyledDateDuration onClick={toggleActive}>
         <StyledDate>Monday, 20</StyledDate>
-        <p>3 hours 17 minutes</p>
+        <p>3 hours 17 minutes<StyledChevronIcon icon={faChevronDown} active={active ? "isActive" : ""} /></p>
       </StyledDateDuration>
-      <StyledTable>
+      <StyledTable active={active ? "isActive" : ""}>
         <thead>
           <tr>
             <StyledHeader>Start</StyledHeader>
