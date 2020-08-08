@@ -18,6 +18,14 @@ const StyledNewCurrentMigraine = styled.div`
   display: flex;
   justify-content: space-between;
   margin-bottom: 100px;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+
+    & div {
+      margin-top: 30px;
+    }
+  }
 `
 
 const StyledCurrentMigraine = styled.div`
@@ -31,6 +39,10 @@ const StyledCurrentMigraine = styled.div`
     font-family: ${props => props.theme.fonts.roboto};
     font-weight: 300;
     font-size: 26px;
+  }
+
+  @media (max-width: 1024px) {
+    width: 300px;
   }
 `
 

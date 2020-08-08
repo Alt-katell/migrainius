@@ -26,7 +26,7 @@ const StyledDate = styled.p`
   margin-right: 24px;
 `
 
-const StyledTable = styled.table`
+const StyledTableContainer = styled.div`
   margin-bottom: 40px;
   display: none;
   ${props => props.active === "isActive" && `
@@ -34,18 +34,50 @@ const StyledTable = styled.table`
   `}
 `
 
-const StyledHeader = styled.th`
+const StyledInnerTable = styled.div`
+  display: flex;
+  justify-content: space-evenly;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
+`
+
+const StyledHeaderDataGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (max-width: 1024px) {
+    flex-direction: row;
+    margin-bottom: 32px;
+    align-items: start;
+  }
+`
+
+const StyledHeader = styled.p`
   text-transform: uppercase;
   color: ${props => props.theme.colors.green};
   font-size: 14px;
-  padding: 0 12px 4px 12px;
-  vertical-align: top;
+  font-weight: bold;
+  text-align: center;
+  height: 30px;
+
+  @media (max-width: 1024px) {
+    width: 200px;
+    text-align: left;
+    margin: 0;
+  }
 `
 
-const StyledData = styled.td`
+const StyledData = styled.p`
   color: ${props => props.theme.colors.lightGrey};
   text-align: center;
-  padding: 0 12px 4px 12px;
+
+  @media (max-width: 1024px) {
+    text-align: left;
+    margin: 0;
+  }
 `
 
 const MigraineRecord = () => {
@@ -61,52 +93,54 @@ const MigraineRecord = () => {
         <StyledDate>Monday, 20</StyledDate>
         <p>3 hours 17 minutes<StyledChevronIcon icon={faChevronDown} active={active ? "isActive" : ""} /></p>
       </StyledDateDuration>
-      <StyledTable active={active ? "isActive" : ""}>
-        <thead>
-          <tr>
+      <StyledTableContainer active={active ? "isActive" : ""}>
+        <StyledInnerTable>
+          <StyledHeaderDataGroup>
             <StyledHeader>Start</StyledHeader>
+            <StyledData>20<br/>Monday<br/>17:00</StyledData>
+          </StyledHeaderDataGroup>
+          <StyledHeaderDataGroup>
             <StyledHeader>End</StyledHeader>
+            <StyledData>20<br/>Monday<br/>20:17</StyledData>
+          </StyledHeaderDataGroup>
+          <StyledHeaderDataGroup>
             <StyledHeader>Medication</StyledHeader>
-            <StyledHeader>Medication efficiency</StyledHeader>
-            <StyledHeader>Activity when started</StyledHeader>
-            <StyledHeader>Hypoglycemia</StyledHeader>
-            <StyledHeader>Stress</StyledHeader>
-            <StyledHeader>Anger</StyledHeader>
-            <StyledHeader>Sport or yoga</StyledHeader>
-            <StyledHeader>Hours of sleep</StyledHeader>
-            <StyledHeader>Intensity</StyledHeader>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <StyledData>
-              20<br/>
-              Monday<br/>
-              17:00
-            </StyledData>
-            <StyledData>
-              20<br/>
-              Monday<br/>
-              20:17
-            </StyledData>
-            <StyledData>
-              Yes<br/>
-              1 Ketum
-            </StyledData>
+            <StyledData>Yes<br/>1 Ketum</StyledData>
+          </StyledHeaderDataGroup>
+          <StyledHeaderDataGroup>
+            <StyledHeader>Medication<br/>efficiency</StyledHeader>
             <StyledData>Yes</StyledData>
+          </StyledHeaderDataGroup>
+          <StyledHeaderDataGroup>
+            <StyledHeader>Activity when<br/>started</StyledHeader>
             <StyledData>TV</StyledData>
+          </StyledHeaderDataGroup>
+          <StyledHeaderDataGroup>
+            <StyledHeader>Hypoglycemia</StyledHeader>
             <StyledData>No</StyledData>
+          </StyledHeaderDataGroup>
+          <StyledHeaderDataGroup>
+            <StyledHeader>Stress</StyledHeader>
             <StyledData>Yes</StyledData>
+          </StyledHeaderDataGroup>
+          <StyledHeaderDataGroup>
+            <StyledHeader>Anger</StyledHeader>
             <StyledData>No</StyledData>
+          </StyledHeaderDataGroup>
+          <StyledHeaderDataGroup>
+            <StyledHeader>Sport or<br/>yoga</StyledHeader>
             <StyledData>Yoga</StyledData>
-            <StyledData>
-              7 hours<br/>
-              30 minutes
-            </StyledData>
+          </StyledHeaderDataGroup>
+          <StyledHeaderDataGroup>
+            <StyledHeader>Hours of<br/>sleep</StyledHeader>
+            <StyledData>7 hours<br/>30 minutes</StyledData>
+          </StyledHeaderDataGroup>
+          <StyledHeaderDataGroup>
+            <StyledHeader>Intensity</StyledHeader>
             <StyledData>7/10</StyledData>
-          </tr>
-        </tbody>
-      </StyledTable>
+          </StyledHeaderDataGroup>
+        </StyledInnerTable>
+      </StyledTableContainer>
     </div>
   )
 }
