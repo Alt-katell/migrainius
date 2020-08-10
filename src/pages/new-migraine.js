@@ -15,6 +15,11 @@ const StyledTitleButton = styled.div`
 
   & a {
     align-self: flex-end;
+
+    @media (max-width: 1024px) {
+      align-self: flex-start;
+      margin-bottom: 42px;
+    }
   }
 `
 
@@ -61,6 +66,10 @@ const StyledQuestionLeft = styled.div`
   & div {
     margin-bottom: 20px;
   }
+
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 `
 
 const StyledQuestionRight = styled.div`
@@ -70,6 +79,10 @@ const StyledQuestionRight = styled.div`
 
   & div {
     margin-bottom: 20px;
+  }
+
+  @media (max-width: 1024px) {
+    width: 100%;
   }
 `
 
@@ -112,6 +125,10 @@ const StyledInput = styled.input`
   &[type="number"] {
     margin-right: 32px;
     width: 40px;
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 6px;
   }
 `
 
