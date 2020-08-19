@@ -18,7 +18,13 @@ module.exports = {
             type: 'Migraine',
             collection: 'migraines',
             map: doc => ({
+              startDayNumber: doc.startDayNumber,
+              startDayDay: doc.startDayDay,
+              startDayMonth: doc.startDayMonth,
               startHour: doc.startHour,
+              endDayNumber: doc.endDayNumber,
+              endDayDay: doc.endDayDay,
+              endDayMonth: doc.endDayMonth,
               endHour: doc.endHour,
               medicationTaken: doc.medicationTaken,
               medicationName: doc.medicationName,
