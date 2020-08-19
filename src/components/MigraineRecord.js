@@ -80,7 +80,7 @@ const StyledData = styled.p`
   }
 `
 
-const MigraineRecord = () => {
+const MigraineRecord = (props) => {
   const [active, setActive] = useState(false)
 
   const toggleActive = () => {
@@ -90,54 +90,54 @@ const MigraineRecord = () => {
   return (
     <div>
       <StyledDateDuration onClick={toggleActive}>
-        <StyledDate>Monday, 20</StyledDate>
+        <StyledDate>{props.startDayDay}, {props.startDayNumber}</StyledDate>
         <p>3 hours 17 minutes<StyledChevronIcon icon={faChevronDown} active={active ? "isActive" : ""} /></p>
       </StyledDateDuration>
       <StyledTableContainer active={active ? "isActive" : ""}>
         <StyledInnerTable>
           <StyledHeaderDataGroup>
             <StyledHeader>Start</StyledHeader>
-            <StyledData>20<br/>Monday<br/>17:00</StyledData>
+            <StyledData>{props.startDayNumber}<br/>{props.startDayDay}<br/>{props.startHour}</StyledData>
           </StyledHeaderDataGroup>
           <StyledHeaderDataGroup>
             <StyledHeader>End</StyledHeader>
-            <StyledData>20<br/>Monday<br/>20:17</StyledData>
+            <StyledData>{props.endDayNumber}<br/>{props.endDayDay}<br/>{props.endHour}</StyledData>
           </StyledHeaderDataGroup>
           <StyledHeaderDataGroup>
             <StyledHeader>Medication</StyledHeader>
-            <StyledData>Yes<br/>1 Ketum</StyledData>
+            <StyledData>{props.medicationTaken}<br/>{props.medicationQuantity} {props.medicationName}</StyledData>
           </StyledHeaderDataGroup>
           <StyledHeaderDataGroup>
             <StyledHeader>Medication<br/>efficiency</StyledHeader>
-            <StyledData>Yes</StyledData>
+            <StyledData>{props.medicationEfficiency}</StyledData>
           </StyledHeaderDataGroup>
           <StyledHeaderDataGroup>
             <StyledHeader>Activity when<br/>started</StyledHeader>
-            <StyledData>TV</StyledData>
+            <StyledData>{props.activityAtStart}</StyledData>
           </StyledHeaderDataGroup>
           <StyledHeaderDataGroup>
             <StyledHeader>Hypoglycemia</StyledHeader>
-            <StyledData>No</StyledData>
+            <StyledData>{props.hypoglycemic}</StyledData>
           </StyledHeaderDataGroup>
           <StyledHeaderDataGroup>
             <StyledHeader>Stress</StyledHeader>
-            <StyledData>Yes</StyledData>
+            <StyledData>{props.stressed}</StyledData>
           </StyledHeaderDataGroup>
           <StyledHeaderDataGroup>
             <StyledHeader>Anger</StyledHeader>
-            <StyledData>No</StyledData>
+            <StyledData>{props.angry}</StyledData>
           </StyledHeaderDataGroup>
           <StyledHeaderDataGroup>
             <StyledHeader>Sport or<br/>yoga</StyledHeader>
-            <StyledData>Yoga</StyledData>
+            <StyledData>{props.physicalActivity}</StyledData>
           </StyledHeaderDataGroup>
           <StyledHeaderDataGroup>
             <StyledHeader>Hours of<br/>sleep</StyledHeader>
-            <StyledData>7 hours<br/>30 minutes</StyledData>
+            <StyledData>{props.hoursOfSleep}:{props.minutesOfSleep}</StyledData>
           </StyledHeaderDataGroup>
           <StyledHeaderDataGroup>
             <StyledHeader>Intensity</StyledHeader>
-            <StyledData>7/10</StyledData>
+            <StyledData>{props.intensity}/10</StyledData>
           </StyledHeaderDataGroup>
         </StyledInnerTable>
       </StyledTableContainer>

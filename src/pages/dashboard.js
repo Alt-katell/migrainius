@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 
 import Layout from '../layouts/Layout'
 import Button from '../components/Button'
@@ -62,8 +62,34 @@ const StyledNoMigraine = styled.h3`
   }
 `
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   const existingRecords = true;
+
+  const recordList = props.data.allMigraine.edges.map(migraine => (
+    <MigraineRecord
+      key={migraine.node.id}
+      startDayNumber={migraine.node.startDayNumber}
+      startDayDay={migraine.node.startDayDay}
+      startDayMonth={migraine.node.startDayMonth}
+      startHour={migraine.node.startHour}
+      endDayNumber={migraine.node.endDayNumber}
+      endDayDay={migraine.node.endDayDay}
+      endDayMonth={migraine.node.endDayMonth}
+      endHour={migraine.node.endHour}
+      medicationTaken={migraine.node.medicationTaken}
+      medicationName={migraine.node.medicationName}
+      medicationQuantity={migraine.node.medicationQuantity}
+      medicationEfficiency={migraine.node.medicationEfficiency}
+      activityAtStart={migraine.node.activityAtStart}
+      hypoglycemic={migraine.node.hypoglycemic}
+      physicalActivity={migraine.node.physicalActivity}
+      stressed={migraine.node.stressed}
+      angry={migraine.node.angry}
+      hoursOfSleep={migraine.node.hoursOfSleep}
+      minutesOfSleep={migraine.node.minutesOfSleep}
+      intensity={migraine.node.intensity}/>
+    )
+  )
 
   let records = (
     <div>
@@ -77,9 +103,7 @@ const Dashboard = () => {
     records = (
       <div>
         <StyledTitle3>RECORDS</StyledTitle3>
-        <MigraineRecord/>
-        <MigraineRecord/>
-        <MigraineRecord/>
+        {recordList}
       </div>
     )
   }
@@ -100,5 +124,38 @@ const Dashboard = () => {
     </Layout>
   )
 }
+
+export const query = graphql`
+  {
+    allMigraine {
+      edges {
+        node {
+          activityAtStart
+          angry
+          endHour
+          hoursOfSleep
+          hypoglycemic
+          id
+          intensity
+          medicationEfficiency
+          medicationName
+          medicationQuantity
+          medicationTaken
+          minutesOfSleep
+          physicalActivity
+          startHour
+          stressed
+          endDayDay
+          endDayMonth
+          endDayNumber
+          startDayDay
+          startDayMonth
+          startDayNumber
+        }
+      }
+    }
+  }
+
+`
 
 export default Dashboard
