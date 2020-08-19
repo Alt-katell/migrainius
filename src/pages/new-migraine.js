@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
@@ -86,12 +86,6 @@ const StyledQuestionRight = styled.div`
   }
 `
 
-const StyledQuestionGroup = styled.div`
-`
-
-const StyledQuestion = styled.div`
-`
-
 const StyledQuestionQuestion = styled.p`
   color: ${props => props.theme.colors.green};
 `
@@ -146,6 +140,54 @@ const StyledLabel = styled.label`
 `
 
 const NewMigraine = () => {
+  const [migraineForm, setMigraineForm] = useState({
+    startHour: "",
+    endHour: "",
+    medicationTaken: "",
+    medicationName: "",
+    medicationQuantity: "",
+    medicationEfficiency: "",
+    activityAtStart: "",
+    hypoglycemic: "",
+    physicalActivity: "",
+    stressed: "",
+    angry: "",
+    hoursOfSleep: "",
+    minutesOfSleep: "",
+    intensity: ""
+  })
+
+  const [ongoingMigraine, setOngoingMigraine] = useState(false)
+
+  const changeHandler = (event) => {
+    const updatedMigraineForm = {
+      ...migraineForm
+    }
+
+    const {name, value} = event.target
+    if (value === "now") {
+      const today = new Date()
+      const time = today.getHours() + ":" + today.getMinutes()
+      updatedMigraineForm[name] = time
+    } else {
+      updatedMigraineForm[name] = value
+    }
+
+    if (value === "ongoing") {
+      setOngoingMigraine(true)
+    }
+
+    setMigraineForm(updatedMigraineForm)
+  }
+
+  const submitHandler = (event) => {
+    event.preventDefault()
+    const formData = {
+      migraineData: migraineForm,
+      ongoingCrisis: ongoingMigraine
+    }
+  }
+
   return (
     <Layout>
       <StyledTitleButton>
@@ -159,28 +201,28 @@ const NewMigraine = () => {
 
           <StyledCategoryQuestions>
             <StyledQuestionLeft>
-              <StyledQuestionGroup>
+              <div className="question-group">
                 <StyledQuestionQuestion>When did your migraine start?</StyledQuestionQuestion>
-                  <StyledInput type="radio" id="now" name="start" value="now"/>
+                  <StyledInput type="radio" id="now" name="startHour" value="now" onChange={changeHandler}/>
                   <StyledLabel htmlFor="now">Now</StyledLabel>
 
-                  <StyledInput type="radio" id="another-moment" name="start" value="another-moment"/>
+                  <StyledInput type="radio" id="another-moment" name="startHour" value="another moment" onChange={changeHandler}/>
                   <StyledLabel htmlFor="another-moment">Another moment</StyledLabel>
-              </StyledQuestionGroup>
+              </div>
             </StyledQuestionLeft>
 
             <StyledQuestionRight>
-              <StyledQuestionGroup>
+              <div className="question-group">
                 <StyledQuestionQuestion>When did your migraine end?</StyledQuestionQuestion>
-                <StyledInput type="radio" id="now" name="end" value="now"/>
+                <StyledInput type="radio" id="now" name="endHour" value="now" onChange={changeHandler}/>
                 <StyledLabel htmlFor="now">Now</StyledLabel>
 
-                <StyledInput type="radio" id="another-moment" name="end" value="another-moment"/>
+                <StyledInput type="radio" id="another-moment" name="endHour" value="another moment" onChange={changeHandler}/>
                 <StyledLabel htmlFor="another-moment">Another moment</StyledLabel>
 
-                <StyledInput type="radio" id="ongoing" name="end" value="ongoing"/>
+                <StyledInput type="radio" id="ongoing" name="endHour" value="ongoing" onChange={changeHandler}/>
                 <StyledLabel htmlFor="ongoing">Ongoing</StyledLabel>
-              </StyledQuestionGroup>
+              </div>
             </StyledQuestionRight>
           </StyledCategoryQuestions>
         </StyledCategory>
@@ -191,35 +233,35 @@ const NewMigraine = () => {
 
           <StyledCategoryQuestions>
             <StyledQuestionLeft>
-              <StyledQuestionGroup>
+              <div className="question-group">
                 <StyledQuestionQuestion>Did you take any medication?</StyledQuestionQuestion>
-                <StyledInput type="radio" id="yes" name="medication" value="yes"/>
+                <StyledInput type="radio" id="yes" name="medicationTaken" value="yes" onChange={changeHandler}/>
                 <StyledLabel htmlFor="yes">Yes</StyledLabel>
 
-                <StyledInput type="radio" id="no" name="medication" value="no"/>
+                <StyledInput type="radio" id="no" name="medicationTaken" value="no" onChange={changeHandler}/>
                 <StyledLabel htmlFor="no">No</StyledLabel>
-              </StyledQuestionGroup>
+              </div>
             </StyledQuestionLeft>
 
 
             <StyledQuestionRight>
-              <StyledQuestionGroup>
+              <div className="question-group">
                 <StyledQuestionQuestion>What is the name of the medication and what quantity did you take?</StyledQuestionQuestion>
                 <StyledLabel htmlFor="medication">Name</StyledLabel>
-                <StyledInput type="text" name="medication"/>
+                <StyledInput type="text" name="medicationName" onChange={changeHandler}/>
 
                 <StyledLabel htmlFor="quantity">Quantity</StyledLabel>
-                <StyledInput type="number" name="quantity"/>
-              </StyledQuestionGroup>
+                <StyledInput type="number" name="medicationQuantity" onChange={changeHandler}/>
+              </div>
 
-              <StyledQuestionGroup>
+              <div className="question-group">
                 <StyledQuestionQuestion>Was the medication efficient?</StyledQuestionQuestion>
-                <StyledInput type="radio" id="yes" name="efficiency" value="yes"/>
+                <StyledInput type="radio" id="yes" name="medicationEfficiency" value="yes" onChange={changeHandler}/>
                 <StyledLabel htmlFor="efficiency">Yes</StyledLabel>
 
-                <StyledInput type="radio" id="no" name="efficiency" value="no"/>
+                <StyledInput type="radio" id="no" name="medicationEfficiency" value="no" onChange={changeHandler}/>
                 <StyledLabel htmlFor="efficiency">No</StyledLabel>
-              </StyledQuestionGroup>
+              </div>
             </StyledQuestionRight>
           </StyledCategoryQuestions>
         </StyledCategory>
@@ -229,11 +271,11 @@ const NewMigraine = () => {
 
           <StyledCategoryQuestions>
             <StyledQuestionLeft>
-              <StyledQuestionGroup>
+              <div className="question-group">
                 <StyledQuestionQuestion>What were you doing when it started?</StyledQuestionQuestion>
                 <StyledLabel htmlFor="activity">Activity</StyledLabel>
-                <StyledInput type="text" name="activity"/>
-              </StyledQuestionGroup>
+                <StyledInput type="text" name="activityAtStart" onChange={changeHandler}/>
+              </div>
             </StyledQuestionLeft>
           </StyledCategoryQuestions>
         </StyledCategory>
@@ -243,46 +285,46 @@ const NewMigraine = () => {
 
           <StyledCategoryQuestions>
             <StyledQuestionLeft>
-              <StyledQuestionGroup>
+              <div className="question-group">
                 <StyledQuestionQuestion>Have you been hypoglycemic or very hungry today?</StyledQuestionQuestion>
-                <StyledInput type="radio" id="yes" name="hypoglycemic" value="yes"/>
+                <StyledInput type="radio" id="yes" name="hypoglycemic" value="yes" onChange={changeHandler}/>
                 <StyledLabel htmlFor="hypoglycemic">Yes</StyledLabel>
 
-                <StyledInput type="radio" id="no" name="hypoglycemic" value="no"/>
+                <StyledInput type="radio" id="no" name="hypoglycemic" value="no" onChange={changeHandler}/>
                 <StyledLabel htmlFor="hypoglycemic">No</StyledLabel>
-              </StyledQuestionGroup>
+              </div>
 
-              <StyledQuestionGroup>
+              <div className="question-group">
                 <StyledQuestionQuestion>Did you do any physical activity or yoga today?</StyledQuestionQuestion>
-                <StyledInput type="radio" id="sport" name="physical-activity" value="sport"/>
+                <StyledInput type="radio" id="sport" name="physicalActivity" value="sport" onChange={changeHandler}/>
                 <StyledLabel htmlFor="physical-activity">Sport</StyledLabel>
 
-                <StyledInput type="radio" id="yoga" name="physical-activity" value="yoga"/>
+                <StyledInput type="radio" id="yoga" name="physicalActivity" value="yoga" onChange={changeHandler}/>
                 <StyledLabel htmlFor="efficiency">Yoga</StyledLabel>
 
-                <StyledInput type="radio" id="both" name="physical-activity" value="both"/>
+                <StyledInput type="radio" id="both" name="physicalActivity" value="both" onChange={changeHandler}/>
                 <StyledLabel htmlFor="physical-activity">Both</StyledLabel>
-              </StyledQuestionGroup>
+              </div>
             </StyledQuestionLeft>
 
             <StyledQuestionRight>
-              <StyledQuestionGroup>
+              <div className="question-group">
                 <StyledQuestionQuestion>Have you been stressed today?</StyledQuestionQuestion>
-                <StyledInput type="radio" id="yes" name="stressed" value="yes"/>
+                <StyledInput type="radio" id="yes" name="stressed" value="yes" onChange={changeHandler}/>
                 <StyledLabel htmlFor="stressed">Yes</StyledLabel>
 
-                <StyledInput type="radio" id="no" name="stressed" value="no"/>
+                <StyledInput type="radio" id="no" name="stressed" value="no" onChange={changeHandler}/>
                 <StyledLabel htmlFor="stressed">No</StyledLabel>
-              </StyledQuestionGroup>
+              </div>
 
-              <StyledQuestionGroup>
+              <div className="question-group">
                 <StyledQuestionQuestion>Have you been angry today?</StyledQuestionQuestion>
-                <StyledInput type="radio" id="yes" name="angry" value="yes"/>
+                <StyledInput type="radio" id="yes" name="angry" value="yes" onChange={changeHandler}/>
                 <StyledLabel htmlFor="angry">Yes</StyledLabel>
 
-                <StyledInput type="radio" id="no" name="angry" value="no"/>
+                <StyledInput type="radio" id="no" name="angry" value="no" onChange={changeHandler}/>
                 <StyledLabel htmlFor="angry">No</StyledLabel>
-              </StyledQuestionGroup>
+              </div>
             </StyledQuestionRight>
           </StyledCategoryQuestions>
         </StyledCategory>
@@ -292,14 +334,14 @@ const NewMigraine = () => {
 
           <StyledCategoryQuestions>
             <StyledQuestionLeft>
-              <StyledQuestionGroup>
+              <div className="question-group">
                 <StyledQuestionQuestion>How many hours did you sleep last night?</StyledQuestionQuestion>
                 <StyledLabel htmlFor="hours">Hours</StyledLabel>
-                <StyledInput type="number" name="hours"/>
+                <StyledInput type="number" name="hoursOfSleep" onChange={changeHandler}/>
 
                 <StyledLabel htmlFor="minutes">Minutes</StyledLabel>
-                <StyledInput type="number" name="minutes"/>
-              </StyledQuestionGroup>
+                <StyledInput type="number" name="minutesOfSleep" onChange={changeHandler}/>
+              </div>
             </StyledQuestionLeft>
           </StyledCategoryQuestions>
         </StyledCategory>
@@ -309,10 +351,10 @@ const NewMigraine = () => {
 
           <StyledCategoryQuestions>
             <StyledQuestionLeft>
-              <StyledQuestionGroup>
+              <div className="question-group">
                 <StyledQuestionQuestion>On a scale from 1 to 10 (1 = not very painful, 10 =  extremely painful), what is the intensity of this migraine?</StyledQuestionQuestion>
                 <StyledLabel htmlFor="intensity">Intensity</StyledLabel>
-                <StyledSelect name="intensity">
+                <StyledSelect name="intensity" onChange={changeHandler}>
                   <option value="1">1</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -324,7 +366,7 @@ const NewMigraine = () => {
                   <option value="9">9</option>
                   <option value="10">10</option>
                 </StyledSelect>
-              </StyledQuestionGroup>
+              </div>
             </StyledQuestionLeft>
           </StyledCategoryQuestions>
         </StyledCategory>
