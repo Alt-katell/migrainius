@@ -9,7 +9,7 @@ import Button from '../components/Button'
 import AccountForm from '../components/account-forms/AccountForm'
 import AccountFormInput from '../components/account-forms/AccountFormInput'
 
-const resetPassword = () => {
+const ResetPassword = () => {
   return (
     <Layout>
       <AccountForm>
@@ -20,5 +20,5 @@ const resetPassword = () => {
   )
 }
 
-export default resetPassword
+export default ResetPassword
 

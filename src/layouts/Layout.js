@@ -4,6 +4,8 @@ import { createGlobalStyle } from 'styled-components'
 
 import Theme from './Theme'
 
+import { FirebaseContext, useAuth } from '../components/Firebase'
+
 import Navbar from '../components/navigation/Navbar'
 import SideDrawer from '../components/navigation/SideDrawer'
 import Footer from '../components/Footer'
@@ -29,6 +31,8 @@ const Container = styled.div`
 `
 
 const Layout = ({children, data}) => {
+  const {user, firebase, loading} = useAuth()
+
   const [sideDrawerIsVisible, setSideDrawerIsVisible] = useState(false);
 
   const sideDrawerClosedHandler = () => {
@@ -40,7 +44,7 @@ const Layout = ({children, data}) => {
   };
 
   return (
-    <div>
+    <FirebaseContext.Provider value={{user, firebase, loading}}>
       <Container>
       <Theme>
         <GlobalStyle/>
@@ -53,7 +57,7 @@ const Layout = ({children, data}) => {
         <Footer />
       </Theme>
       </Container>
-    </div>
+    </FirebaseContext.Provider>
   )
 }
 

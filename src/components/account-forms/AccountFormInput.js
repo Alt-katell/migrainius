@@ -23,14 +23,15 @@ const StyledInput = styled.input`
   }
 `
 
-const AccountFormInput = ({type, name, placeholder, marginBottom}) => {
+const AccountFormInput = ({type, name, placeholder, marginBottom, changed}) => {
   return (
     <StyledInput
       type={type}
       name={name}
       placeholder={placeholder}
       marginBottom={marginBottom}
-      required />
+      required
+      onChange={changed} />
   )
 }
 

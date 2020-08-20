@@ -19,10 +19,10 @@ const StyledBackground = styled.div`
   }
 `
 
-const AccountForm = ({children}) => {
+const AccountForm = ({children, submitted}) => {
   return (
     <StyledBackground>
-      <StyledForm>
+      <StyledForm onSubmit={submitted}>
         {children}
       </StyledForm>
     </StyledBackground>

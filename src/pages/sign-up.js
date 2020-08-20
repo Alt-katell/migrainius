@@ -21,7 +21,7 @@ const StyledP = styled.p`
   }
 `
 
-const signUp = () => {
+const SignUp = () => {
   return (
     <Layout>
       <AccountForm>
@@ -35,4 +35,4 @@ const signUp = () => {
   )
 }
 
-export default signUp
+export default SignUp
