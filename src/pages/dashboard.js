@@ -133,7 +133,6 @@ export const query = graphql`
           activityAtStart
           angry
           endHour
-          hoursOfSleep
           hypoglycemic
           id
           intensity
@@ -141,7 +140,6 @@ export const query = graphql`
           medicationName
           medicationQuantity
           medicationTaken
-          minutesOfSleep
           physicalActivity
           startHour
           stressed

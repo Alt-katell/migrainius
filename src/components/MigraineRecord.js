@@ -87,11 +87,26 @@ const MigraineRecord = (props) => {
     setActive(!active)
   }
 
+  let durationTotalMinutes
+  const startTime = props.startHour.split(':')
+  const startMinutes = (startTime[0] * 60) + (startTime[1] * 1)
+  const endTime = props.endHour.split(':')
+  const endMinutes = (endTime[0] * 60) + (endTime[1] * 1)
+
+  if (props.startDayNumber === props.endDayNumber) {
+    durationTotalMinutes = endMinutes - startMinutes
+  } else if ((props.startDayNumber === props.endDayNumber + 1) || (props.startDayNumber === (31 || 30) && props.endDayNumber === 1)) {
+    durationTotalMinutes = endMinutes - startMinutes + 1440
+  }
+
+  const durationHours = Math.floor(durationTotalMinutes / 60)
+  const durationMinutes = durationTotalMinutes - (durationHours * 60)
+
   return (
     <div>
       <StyledDateDuration onClick={toggleActive}>
         <StyledDate>{props.startDayDay}, {props.startDayNumber}</StyledDate>
-        <p>3 hours 17 minutes<StyledChevronIcon icon={faChevronDown} active={active ? "isActive" : ""} /></p>
+        <p>{durationHours} hour{durationHours > 1 ? "s" : ""} {durationMinutes} minute{durationMinutes > 1 ? "s" : ""}<StyledChevronIcon icon={faChevronDown} active={active ? "isActive" : ""} /></p>
       </StyledDateDuration>
       <StyledTableContainer active={active ? "isActive" : ""}>
         <StyledInnerTable>
@@ -133,7 +148,7 @@ const MigraineRecord = (props) => {
           </StyledHeaderDataGroup>
           <StyledHeaderDataGroup>
             <StyledHeader>Hours of<br/>sleep</StyledHeader>
-            <StyledData>{props.hoursOfSleep}:{props.minutesOfSleep}</StyledData>
+            <StyledData>hours:minutes</StyledData>
           </StyledHeaderDataGroup>
           <StyledHeaderDataGroup>
             <StyledHeader>Intensity</StyledHeader>

@@ -35,8 +35,6 @@ module.exports = {
               physicalActivity: doc.physicalActivity,
               stressed: doc.stressed,
               angry: doc.angry,
-              hoursOfSleep: doc.hoursOfSleep,
-              minutesOfSleep: doc.minutesOfSleep,
               intensity: doc.intensity
             }),
           }
