@@ -148,7 +148,7 @@ const MigraineRecord = (props) => {
           </StyledHeaderDataGroup>
           <StyledHeaderDataGroup>
             <StyledHeader>Hours of<br/>sleep</StyledHeader>
-            <StyledData>hours:minutes</StyledData>
+            <StyledData>{props.hoursOfSleep}:{props.minutesOfSleep}</StyledData>
           </StyledHeaderDataGroup>
           <StyledHeaderDataGroup>
             <StyledHeader>Intensity</StyledHeader>

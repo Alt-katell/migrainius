@@ -132,7 +132,11 @@ export const query = graphql`
         node {
           activityAtStart
           angry
+          endDayDay
+          endDayMonth
           endHour
+          endDayNumber
+          hoursOfSleep
           hypoglycemic
           id
           intensity
@@ -141,14 +145,12 @@ export const query = graphql`
           medicationQuantity
           medicationTaken
           physicalActivity
-          startHour
-          stressed
-          endDayDay
-          endDayMonth
-          endDayNumber
           startDayDay
           startDayMonth
+          startHour
           startDayNumber
+          stressed
+          minutesOfSleep
         }
       }
     }
