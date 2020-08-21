@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
+import { Link, navigate } from 'gatsby'
 
 import { useAuth } from '../components/Firebase'
 
@@ -45,7 +45,7 @@ const LogIn = () => {
   const submitHandler = (event) => {
     event.preventDefault()
 
-    firebase.login({email: formValues.email, password: formValues.password})
+    firebase.login({email: formValues.email, password: formValues.password}).then(() => navigate("/dashboard/"))
   }
 
   return (

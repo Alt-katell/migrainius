@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
+import { Link, navigate } from 'gatsby'
 
 import { FirebaseContext} from '../Firebase'
 
@@ -39,15 +39,18 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
 const Navbar = () => {
   const {firebase, user} = useContext(FirebaseContext)
 
-  let navItemList
+  const logoutHandler = () => {
+    firebase.logout().then(() => navigate('/'))
+  }
 
+  let navItemList
   if (!!user) {
     navItemList = (
       <StyledUl>
         <NavigationItem link="/">About</NavigationItem>
         <NavigationItem link="/dashboard/">Dashboard</NavigationItem>
         <NavigationItem link="/account/">Account</NavigationItem>
-        <NavigationItem link="/">Log out<StyledFontAwesomeIcon icon={faPowerOff} /></NavigationItem>
+        <NavigationItem link="#" logout={logoutHandler}>Log out<StyledFontAwesomeIcon icon={faPowerOff} /></NavigationItem>
       </StyledUl>
     )
   } else {

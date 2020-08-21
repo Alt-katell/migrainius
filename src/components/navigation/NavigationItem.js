@@ -25,10 +25,15 @@ const StyledLink = styled(Link)`
   }
 `
 
-const NavigationItem = ({link, children}) => {
+const NavigationItem = ({link, children, logout}) => {
   return (
     <StyledLi>
-      <StyledLink to={link} activeClassName="active">{children}</StyledLink>
+      <StyledLink
+        to={link}
+        activeClassName="active"
+        onClick={logout}>
+        {children}
+      </StyledLink>
     </StyledLi>
   )
 }
