@@ -30,6 +30,8 @@ const LogIn = () => {
     password: ""
   })
 
+  const {firebase} = useAuth()
+
   const changeHandler = (event) => {
     const updatedFormValues = {
       ...formValues
@@ -42,6 +44,8 @@ const LogIn = () => {
 
   const submitHandler = (event) => {
     event.preventDefault()
+
+    firebase.login({email: formValues.email, password: formValues.password})
   }
 
   return (

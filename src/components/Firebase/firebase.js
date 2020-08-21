@@ -25,12 +25,12 @@ class Firebase {
 let firebaseInstance;
 
 function getFirebaseInstance(app) {
-  if(!firebaseInstance && app){
+  if (!firebaseInstance && app) {
     firebaseInstance = new Firebase(app)
     return firebaseInstance
-  }else if(firebaseInstance){
+  } else if (firebaseInstance) {
     return firebaseInstance
-  }else{
+  } else {
     return null
   }
 }

@@ -57,7 +57,7 @@ function useAuth() {
                         }
                     })*/
                 } else {
-                    setUser(null)
+                  setUser(null)
                 }
 
                 setLoading(false)

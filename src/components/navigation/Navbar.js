@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
@@ -37,18 +37,35 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
 `
 
 const Navbar = () => {
+  const {firebase, user} = useContext(FirebaseContext)
+  console.log(firebase, user)
+
+  let navItemList
+
+  if (!!user) {
+    navItemList = (
+      <StyledUl>
+        <NavigationItem link="/">About</NavigationItem>
+        <NavigationItem link="/dashboard/">Dashboard</NavigationItem>
+        <NavigationItem link="/account/">Account</NavigationItem>
+        <NavigationItem link="/">Log out<StyledFontAwesomeIcon icon={faPowerOff} /></NavigationItem>
+      </StyledUl>
+    )
+  } else {
+    navItemList = (
+      <StyledUl>
+        <NavigationItem link="/">About</NavigationItem>
+        <NavigationItem link="/sign-up/">Sign up</NavigationItem>
+        <NavigationItem link="/log-in/">Log in</NavigationItem>
+      </StyledUl>
+    )
+  }
+
   return (
     <StyledHeader>
       <Link to="/"><StyledLogo src={logo} alt="Migrainius Logo"/></Link>
       <nav>
-        <StyledUl>
-          <NavigationItem link="/">About</NavigationItem>
-          <NavigationItem link="/sign-up/">Sign up</NavigationItem>
-          <NavigationItem link="/log-in/">Log in</NavigationItem>
-          <NavigationItem link="/dashboard/">Dashboard</NavigationItem>
-          <NavigationItem link="/account/">Account</NavigationItem>
-          <NavigationItem link="/">Log out<StyledFontAwesomeIcon icon={faPowerOff} /></NavigationItem>
-        </StyledUl>
+        {navItemList}
       </nav>
     </StyledHeader>
   )
