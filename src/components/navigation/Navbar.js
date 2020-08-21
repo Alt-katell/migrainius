@@ -38,7 +38,6 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
 
 const Navbar = () => {
   const {firebase, user} = useContext(FirebaseContext)
-  console.log(firebase, user)
 
   let navItemList
 

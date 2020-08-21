@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
+
+import { FirebaseContext} from '../Firebase'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPowerOff } from '@fortawesome/free-solid-svg-icons'
@@ -64,6 +66,29 @@ const StyledOffIcon = styled(FontAwesomeIcon)`
 `
 
 const SideDrawer = (props) => {
+  const {firebase, user} = useContext(FirebaseContext)
+
+  let navItemList
+
+  if (!!user) {
+    navItemList = (
+      <StyledUl>
+        <NavigationItem link="/">About</NavigationItem>
+        <NavigationItem link="/dashboard/">Dashboard</NavigationItem>
+        <NavigationItem link="/account/">Account</NavigationItem>
+        <NavigationItem link="/">Log out<StyledOffIcon icon={faPowerOff} /></NavigationItem>
+      </StyledUl>
+    )
+  } else {
+    navItemList = (
+      <StyledUl>
+        <NavigationItem link="/">About</NavigationItem>
+        <NavigationItem link="/sign-up/">Sign up</NavigationItem>
+        <NavigationItem link="/log-in/">Log in</NavigationItem>
+      </StyledUl>
+    )
+  }
+
   return (
     <div>
       <Backdrop show={props.open ? true : false} clicked={props.closed} />
@@ -72,14 +97,7 @@ const SideDrawer = (props) => {
         <Link to="/"><StyledLogo src={logo} alt="Migrainius Logo"/></Link>
         <StyledSideDrawer show={props.open} >
           <nav>
-            <StyledUl>
-              <NavigationItem link="/">About</NavigationItem>
-              <NavigationItem link="/sign-up/">Sign up</NavigationItem>
-              <NavigationItem link="/log-in/">Log in</NavigationItem>
-              <NavigationItem link="/dashboard/">Dashboard</NavigationItem>
-              <NavigationItem link="/account/">Account</NavigationItem>
-              <NavigationItem link="/">Log out<StyledOffIcon icon={faPowerOff} /></NavigationItem>
-            </StyledUl>
+            {navItemList}
           </nav>
         </StyledSideDrawer>
       </StyledHeader>
