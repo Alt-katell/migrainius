@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
 import { Link, navigate } from 'gatsby'
 
-import { useAuth } from '../components/Firebase'
+import { FirebaseContext } from '../components/Firebase'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
@@ -29,7 +29,7 @@ const LogIn = () => {
     password: ""
   })
 
-  const {firebase} = useAuth()
+  const {firebase} = useContext(FirebaseContext)
 
   const changeHandler = (event) => {
     const updatedFormValues = {
@@ -44,14 +44,17 @@ const LogIn = () => {
   const submitHandler = (event) => {
     event.preventDefault()
 
-    firebase.login({email: formValues.email, password: formValues.password}).then(() => navigate("/dashboard/"))
+    firebase.login({
+      email: formValues.email,
+      password: formValues.password
+    }).then(() => navigate("/dashboard/"))
   }
 
   return (
     <div>
       <AccountForm submitted={submitHandler}>
-          <AccountFormInput type="email" name="email" placeholder="Email" changed={changeHandler} />
-          <AccountFormInput type="password" name="password" placeholder="Password" marginBottom="0" changed={changeHandler} />
+          <AccountFormInput type="email" name="email" placeholder="Email" changed={changeHandler} value={formValues.email} />
+          <AccountFormInput type="password" name="password" placeholder="Password" marginBottom="0" changed={changeHandler} value={formValues.password} />
           <StyledP style={{alignSelf: "flex-start"}}><Link to="/reset-password/">Forgot your password?</Link></StyledP>
           <Button background="orange" hoverBackground="transparent"><FontAwesomeIcon icon={faPaperPlane} />Log in</Button>
         <StyledP>Don't have an account yet? <Link to="/sign-up/">Sign up</Link></StyledP>
