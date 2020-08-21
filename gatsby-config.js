@@ -10,6 +10,12 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/layouts/Layout`),
+      },
+    },
+    {
       resolve: 'gatsby-firesource',
       options: {
         credential: require("./firebase.json"),

@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
-import Layout from '../layouts/Layout'
 import Button from '../components/Button'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -189,7 +188,7 @@ const NewMigraine = () => {
   }
 
   return (
-    <Layout>
+    <div>
       <StyledTitleButton>
         <StyledTitle1>NEW MIGRAINE</StyledTitle1>
         <Link to="/dashboard/"><Button background="transparent" hoverBackground="orange"><FontAwesomeIcon icon={faTimes} />Cancel</Button></Link>
@@ -373,7 +372,7 @@ const NewMigraine = () => {
 
         <Button background="orange" hoverBackground="transparent"><FontAwesomeIcon icon={faCheck} />Submit</Button>
       </StyledForm>
-    </Layout>
+    </div>
   )
 }
 

@@ -7,8 +7,6 @@ import { faEye } from '@fortawesome/free-solid-svg-icons'
 import { faLightbulb } from '@fortawesome/free-solid-svg-icons'
 import { faFistRaised } from '@fortawesome/free-solid-svg-icons'
 
-import Layout from '../layouts/Layout'
-
 const StyledBanner = styled.div`
   display: flex;
   justify-content: space-between;
@@ -127,7 +125,7 @@ const StyledBenefitContent = styled.p`
 
 export default function Home() {
   return (
-    <Layout>
+    <div>
       <StyledBanner>
         <StyledTextPart>
           <div className="text">
@@ -162,6 +160,6 @@ export default function Home() {
           <StyledBenefitContent>Limit your exposition to your personal triggers to reduce the number of crises and predict the moment when they happen</StyledBenefitContent>
         </StyledBenefit>
       </StyledBenefitList>
-    </Layout>
+    </div>
   )
 }

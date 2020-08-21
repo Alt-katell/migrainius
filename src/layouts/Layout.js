@@ -53,7 +53,7 @@ const Layout = ({children, data}) => {
           open={sideDrawerIsVisible}
           closed={sideDrawerClosedHandler}
           drawerToggleClicked={sideDrawerToggleHandler} />
-        {children}
+          {children}
         <Footer />
       </Theme>
       </Container>

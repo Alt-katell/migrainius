@@ -50,7 +50,7 @@ const Navbar = () => {
         <NavigationItem link="/">About</NavigationItem>
         <NavigationItem link="/dashboard/">Dashboard</NavigationItem>
         <NavigationItem link="/account/">Account</NavigationItem>
-        <NavigationItem link="#" logout={logoutHandler}>Log out<StyledFontAwesomeIcon icon={faPowerOff} /></NavigationItem>
+        <NavigationItem link="#" clicked={logoutHandler}>Log out<StyledFontAwesomeIcon icon={faPowerOff} /></NavigationItem>
       </StyledUl>
     )
   } else {

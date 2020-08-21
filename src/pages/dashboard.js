@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link, graphql } from 'gatsby'
 
-import Layout from '../layouts/Layout'
 import Button from '../components/Button'
 import MigraineRecord from '../components/MigraineRecord'
 
@@ -109,7 +108,7 @@ const Dashboard = (props) => {
   }
 
   return (
-    <Layout>
+    <div>
       <StyledTitle1>DASHBOARD</StyledTitle1>
       <StyledNewCurrentMigraine>
         <Link to="/new-migraine/"><Button background="transparent" hoverBackground="orange"><FontAwesomeIcon icon={faPlus} />New migraine</Button></Link>
@@ -121,7 +120,7 @@ const Dashboard = (props) => {
 
       {records}
 
-    </Layout>
+    </div>
   )
 }
 

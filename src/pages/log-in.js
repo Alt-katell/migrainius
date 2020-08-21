@@ -7,7 +7,6 @@ import { useAuth } from '../components/Firebase'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 
-import Layout from '../layouts/Layout'
 import Button from '../components/Button'
 import AccountForm from '../components/account-forms/AccountForm'
 import AccountFormInput from '../components/account-forms/AccountFormInput'
@@ -49,7 +48,7 @@ const LogIn = () => {
   }
 
   return (
-    <Layout>
+    <div>
       <AccountForm submitted={submitHandler}>
           <AccountFormInput type="email" name="email" placeholder="Email" changed={changeHandler} />
           <AccountFormInput type="password" name="password" placeholder="Password" marginBottom="0" changed={changeHandler} />
@@ -57,7 +56,7 @@ const LogIn = () => {
           <Button background="orange" hoverBackground="transparent"><FontAwesomeIcon icon={faPaperPlane} />Log in</Button>
         <StyledP>Don't have an account yet? <Link to="/sign-up/">Sign up</Link></StyledP>
       </AccountForm>
-    </Layout>
+    </div>
   )
 }
 

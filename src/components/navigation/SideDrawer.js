@@ -69,7 +69,10 @@ const SideDrawer = (props) => {
   const {firebase, user} = useContext(FirebaseContext)
 
   const logoutHandler = () => {
-    firebase.logout().then(() => navigate('/'))
+    firebase.logout().then(() => {
+      props.drawerToggleClicked()
+      navigate('/')
+    })
   }
 
   let navItemList
@@ -79,7 +82,7 @@ const SideDrawer = (props) => {
         <NavigationItem link="/">About</NavigationItem>
         <NavigationItem link="/dashboard/">Dashboard</NavigationItem>
         <NavigationItem link="/account/">Account</NavigationItem>
-        <NavigationItem link="#" logout={logoutHandler}>Log out<StyledOffIcon icon={faPowerOff} /></NavigationItem>
+        <NavigationItem link="#" clicked={logoutHandler}>Log out<StyledOffIcon icon={faPowerOff} /></NavigationItem>
       </StyledUl>
     )
   } else {
@@ -98,7 +101,7 @@ const SideDrawer = (props) => {
       <StyledHeader>
         <StyledBurgerIcon icon={faBars} onClick={props.drawerToggleClicked}/>
         <Link to="/"><StyledLogo src={logo} alt="Migrainius Logo"/></Link>
-        <StyledSideDrawer show={props.open} >
+        <StyledSideDrawer show={props.open} onClick={props.closed}>
           <nav>
             {navItemList}
           </nav>
