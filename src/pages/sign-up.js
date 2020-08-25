@@ -25,7 +25,7 @@ const StyledP = styled.p`
 
 const SignUp = () => {
   const [formValues, setFormValues] = useState({
-    name: "",
+    userName: "",
     email: "",
     password: "",
     confirmPassword: ""
@@ -53,6 +53,7 @@ const SignUp = () => {
 
     if (formValues.password === formValues.confirmPassword) {
       firebase.signup({
+        userName: formValues.userName,
         email: formValues.email,
         password: formValues.password,
       })
@@ -66,7 +67,7 @@ const SignUp = () => {
   return (
     <div>
       <AccountForm submitted={submitHandler}>
-          <AccountFormInput type="text" name="name" placeholder="Name" changed={changeHandler} value={formValues.name} />
+          <AccountFormInput type="text" name="userName" placeholder="Name" changed={changeHandler} value={formValues.userName} />
           <AccountFormInput type="email" name="email" placeholder="Email" changed={changeHandler} value={formValues.email} />
           <AccountFormInput type="password" name="password" placeholder="Password" changed={changeHandler} value={formValues.password} />
           <AccountFormInput type="password" name="confirmPassword" placeholder="Confirm password" changed={changeHandler} value={formValues.confirmPassword} />

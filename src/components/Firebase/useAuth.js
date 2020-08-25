@@ -9,7 +9,7 @@ function useAuth() {
 
     useEffect(() => {
         let unsubscribe
-        let publicProfileUnsubscribe
+        let userProfileUnsubscribe
 
         loadFirebaseDependencies.then(app => {
             const firebaseInstance = getFirebaseInstance(app)
@@ -17,45 +17,52 @@ function useAuth() {
 
             unsubscribe = firebaseInstance.auth.onAuthStateChanged(userResult => {
                 if (userResult) {
-                    setUser(userResult)
-                    // get user custom claims
-                    /*setLoading(true);
-                    Promise.all([
-                        firebaseInstance.getUserProfile({ userId: userResult.uid }),
-                        firebaseInstance.auth.currentUser.getIdTokenResult(true),
-                    ]).then((result) => {
-                        const publicProfileResult = result[0]
-                        const token = result[1]
+                  firebaseInstance.getUserProfile({
+                    userId: userResult.uid
+                  }).then(result => {
+                    setUser({
+                      ...userResult,
+                      userName: result.empty ? null : result.docs[0].id
+                    })
+                  })
 
-                        if (publicProfileResult.empty) {
-                            publicProfileUnsubscribe = firebaseInstance.db
-                              .collection("publicProfiles")
-                              .where("userId", "==", userResult.uid)
-                              .onSnapshot((snapshot) => {
-                                  const publicProfileDoc = snapshot.docs[0]
-                                  if (publicProfileDoc && publicProfileDoc.id) {
-                                      setUser({
-                                          ...userResult,
-                                          admin: token.claims.admin,
-                                          username: publicProfileDoc.id,
-                                      })
-                                  }
+                    // setLoading(true);
+                    // Promise.all([
+                    //     firebaseInstance.getUserProfile({ userId: userResult.uid }),
+                    //     firebaseInstance.auth.currentUser.getIdTokenResult(true),
+                    // ]).then((result) => {
+                    //     const userProfileResult = result[0]
+                    //     const token = result[1]
 
-                                  setLoading(false)
-                              })
-                        } else {
-                            const publicProfileDoc = publicProfileResult.docs[0]
-                            if (publicProfileDoc && publicProfileDoc.id) {
-                                setUser({
-                                    ...userResult,
-                                    admin: token.claims.admin,
-                                    username: publicProfileDoc.id,
-                                })
-                            }
+                    //     if (userProfileResult.empty) {
+                    //         userProfileUnsubscribe = firebaseInstance.db
+                    //           .collection("userProfiles")
+                    //           .where("userId", "==", userResult.uid)
+                    //           .onSnapshot((snapshot) => {
+                    //               const userProfileDoc = snapshot.docs[0]
+                    //               if (userProfileDoc && userProfileDoc.id) {
+                    //                   setUser({
+                    //                       ...userResult,
+                    //                       admin: token.claims.admin,
+                    //                       username: userProfileDoc.id,
+                    //                   })
+                    //               }
 
-                            setLoading(false)
-                        }
-                    })*/
+                    //               setLoading(false)
+                    //           })
+                    //     } else {
+                    //         const userProfileDoc = userProfileResult.docs[0]
+                    //         if (userProfileDoc && userProfileDoc.id) {
+                    //             setUser({
+                    //                 ...userResult,
+                    //                 admin: token.claims.admin,
+                    //                 username: userProfileDoc.id,
+                    //             })
+                    //         }
+
+                    //         setLoading(false)
+                    //     }
+                    // })
                 } else {
                   setUser(null)
                 }
@@ -69,8 +76,8 @@ function useAuth() {
                 unsubscribe()
             }
 
-            if (publicProfileUnsubscribe) {
-                publicProfileUnsubscribe()
+            if (userProfileUnsubscribe) {
+                userProfileUnsubscribe()
             }
         }
     }, [])
