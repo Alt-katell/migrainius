@@ -19,9 +19,13 @@ class Firebase {
 
   async signup({userName, email, password}) {
     const newUser = await this.auth.createUserWithEmailAndPassword(email, password)
-    return this.db.collection('userProfiles').doc(userName).set({
-      userId: newUser.user.uid
+    return this.db.collection('userProfiles').doc(newUser.user.uid).set({
+      userName: userName
     })
+  }
+
+  async resetPassword({email}) {
+    return this.auth.sendPasswordResetEmail(email)
   }
 
   async login({email, password}) {

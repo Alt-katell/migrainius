@@ -67,10 +67,30 @@ const SignUp = () => {
   return (
     <div>
       <AccountForm submitted={submitHandler}>
-          <AccountFormInput type="text" name="userName" placeholder="Name" changed={changeHandler} value={formValues.userName} />
-          <AccountFormInput type="email" name="email" placeholder="Email" changed={changeHandler} value={formValues.email} />
-          <AccountFormInput type="password" name="password" placeholder="Password" changed={changeHandler} value={formValues.password} />
-          <AccountFormInput type="password" name="confirmPassword" placeholder="Confirm password" changed={changeHandler} value={formValues.confirmPassword} />
+          <AccountFormInput
+            type="text"
+            name="userName"
+            placeholder="Name"
+            changed={changeHandler}
+            value={formValues.userName} />
+          <AccountFormInput
+            type="email"
+            name="email"
+            placeholder="Email"
+            changed={changeHandler}
+            value={formValues.email} />
+          <AccountFormInput
+            type="password"
+            name="password"
+            placeholder="Password"
+            changed={changeHandler}
+            value={formValues.password} />
+          <AccountFormInput
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm password"
+            changed={changeHandler}
+            value={formValues.confirmPassword} />
           {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
           {passwordErrorMessage && <ErrorMessage>Wrong confirmation password</ErrorMessage>}
           <Button background="orange" hoverBackground="transparent"><FontAwesomeIcon icon={faPaperPlane} />Sign up</Button>

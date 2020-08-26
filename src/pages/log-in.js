@@ -59,8 +59,19 @@ const LogIn = () => {
   return (
     <div>
       <AccountForm submitted={submitHandler}>
-          <AccountFormInput type="email" name="email" placeholder="Email" changed={changeHandler} value={formValues.email} />
-          <AccountFormInput type="password" name="password" placeholder="Password" marginBottom="0" changed={changeHandler} value={formValues.password} />
+          <AccountFormInput
+            type="email"
+            name="email"
+            placeholder="Email"
+            changed={changeHandler}
+            value={formValues.email} />
+          <AccountFormInput
+            type="password"
+            name="password"
+            placeholder="Password"
+            marginBottom="0"
+            changed={changeHandler}
+            value={formValues.password} />
           <StyledP style={{alignSelf: "flex-start"}}><Link to="/reset-password/">Forgot your password?</Link></StyledP>
           {errorMessage && <ErrorMessage>Wrong email or password</ErrorMessage>}
           <Button background="orange" hoverBackground="transparent"><FontAwesomeIcon icon={faPaperPlane} />Log in</Button>
