@@ -43,7 +43,15 @@ module.exports = {
               angry: doc.angry,
               hoursOfSleep: doc.hoursOfSleep,
               minutesOfSleep: doc.minutesOfSleep,
-              intensity: doc.intensity
+              intensity: doc.intensity,
+              user: doc.user
+            }),
+          },
+          {
+            type: 'User',
+            collection: 'userProfiles',
+            map: doc => ({
+              userName: doc.userName
             }),
           }
         ]

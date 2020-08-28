@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
+import { Link, navigate } from 'gatsby'
+
+import { FirebaseContext } from '../components/Firebase'
 
 import Button from '../components/Button'
 
@@ -139,6 +141,8 @@ const StyledLabel = styled.label`
 `
 
 const NewMigraine = () => {
+  const {user, firebase} = useContext(FirebaseContext)
+
   const [migraineForm, setMigraineForm] = useState({
     startHour: "",
     endHour: "",
@@ -153,14 +157,15 @@ const NewMigraine = () => {
     angry: "",
     hoursOfSleep: "",
     minutesOfSleep: "",
-    intensity: ""
+    intensity: "",
   })
 
   const [ongoingMigraine, setOngoingMigraine] = useState(false)
 
   const changeHandler = (event) => {
     const updatedMigraineForm = {
-      ...migraineForm
+      ...migraineForm,
+      user: user
     }
 
     const {name, value} = event.target
@@ -181,10 +186,14 @@ const NewMigraine = () => {
 
   const submitHandler = (event) => {
     event.preventDefault()
-    const formData = {
-      migraineData: migraineForm,
-      ongoingCrisis: ongoingMigraine
-    }
+    firebase.addMigraine({
+      userId: user.uid,
+      data: migraineForm
+    })
+    .then(() => navigate("/dashboard/"))
+    .catch((error) => {
+        console.error("Error writing document: ", error);
+    });
   }
 
   return (
@@ -194,7 +203,7 @@ const NewMigraine = () => {
         <Link to="/dashboard/"><Button background="transparent" hoverBackground="orange"><FontAwesomeIcon icon={faTimes} />Cancel</Button></Link>
       </StyledTitleButton>
 
-      <StyledForm>
+      <StyledForm onSubmit={submitHandler}>
         <StyledCategory>
           <StyledCategoryTitle>Hours</StyledCategoryTitle>
 

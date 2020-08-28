@@ -14,7 +14,7 @@ class Firebase {
   }
 
   async getUserProfile({userId}) {
-    return this.db.collection('userProfiles').where('userId', '==', userId).get()
+    return this.db.collection('userProfiles').where('id', '==', userId).get()
   }
 
   async signup({userName, email, password}) {
@@ -34,6 +34,28 @@ class Firebase {
 
   async logout() {
     await this.auth.signOut()
+  }
+
+  addMigraine({data, userId}) {
+    const userRef = this.db.collection("userProfiles").doc(userId)
+    const newMigraine = {
+      startHour: data.startHour,
+      endHour: data.endHour,
+      medicationTaken: data.medicationTaken,
+      medicationName: data.medicationName,
+      medicationQuantity: data.medicationQuantity,
+      medicationEfficiency: data.medicationEfficiency,
+      activityAtStart: data.activityAtStart,
+      hypoglycemic: data.hypoglycemic,
+      physicalActivity: data.physicalActivity,
+      stressed: data.stressed,
+      angry: data.angry,
+      hoursOfSleep: data.hoursOfSleep,
+      minutesOfSleep: data.minutesOfSleep,
+      intensity: data.intensity,
+      user: userRef
+    }
+    return this.db.collection("migraines").add(newMigraine)
   }
 }
 
