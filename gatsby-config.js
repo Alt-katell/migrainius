@@ -24,6 +24,7 @@ module.exports = {
             type: 'Migraine',
             collection: 'migraines',
             map: doc => ({
+              year: doc.year,
               startDayNumber: doc.startDayNumber,
               startDayDay: doc.startDayDay,
               startDayMonth: doc.startDayMonth,
@@ -45,13 +46,6 @@ module.exports = {
               minutesOfSleep: doc.minutesOfSleep,
               intensity: doc.intensity,
               user: doc.user
-            }),
-          },
-          {
-            type: 'User',
-            collection: 'userProfiles',
-            map: doc => ({
-              userName: doc.userName
             }),
           }
         ]

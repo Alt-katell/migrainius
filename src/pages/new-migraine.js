@@ -144,7 +144,14 @@ const NewMigraine = () => {
   const {user, firebase} = useContext(FirebaseContext)
 
   const [migraineForm, setMigraineForm] = useState({
+    year: "",
+    startDayNumber: "",
+    startDayDay: "",
+    startDayMonth: "",
     startHour: "",
+    endDayNumber: "",
+    endDayDay: "",
+    endDayMonth: "",
     endHour: "",
     medicationTaken: "",
     medicationName: "",
@@ -163,14 +170,22 @@ const NewMigraine = () => {
   const [ongoingMigraine, setOngoingMigraine] = useState(false)
 
   const changeHandler = (event) => {
+    const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+    const today = new Date()
     const updatedMigraineForm = {
       ...migraineForm,
-      user: user
+      user: user,
+      year: today.getFullYear(),
+      startDayNumber: today.getDate(),
+      startDayDay: days[today.getDay()],
+      startDayMonth: today.getMonth() + 1,
+      endDayNumber: today.getDate(),
+      endDayDay: days[today.getDay()],
+      endDayMonth: today.getMonth() + 1,
     }
 
     const {name, value} = event.target
     if (value === "now") {
-      const today = new Date()
       const time = today.getHours() + ":" + today.getMinutes()
       updatedMigraineForm[name] = time
     } else {
@@ -182,6 +197,7 @@ const NewMigraine = () => {
     }
 
     setMigraineForm(updatedMigraineForm)
+
   }
 
   const submitHandler = (event) => {

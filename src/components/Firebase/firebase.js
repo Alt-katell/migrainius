@@ -36,10 +36,22 @@ class Firebase {
     await this.auth.signOut()
   }
 
+  getMigraines({userId}) {
+    const userRef = this.db.collection("userProfiles").doc(userId)
+    return this.db.collection('migraines').where("user", "==", userRef)
+  }
+
   addMigraine({data, userId}) {
     const userRef = this.db.collection("userProfiles").doc(userId)
     const newMigraine = {
+      year: data.year,
+      startDayNumber: data.startDayNumber,
+      startDayDay: data.startDayDay,
+      startDayMonth: data.startDayMonth,
       startHour: data.startHour,
+      endDayNumber: data.endDayNumber,
+      endDayDay: data.endDayDay,
+      endDayMonth: data.endDayMonth,
       endHour: data.endHour,
       medicationTaken: data.medicationTaken,
       medicationName: data.medicationName,
