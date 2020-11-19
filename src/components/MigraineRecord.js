@@ -81,26 +81,26 @@ const StyledData = styled.p`
 `
 
 const MigraineRecord = (props) => {
-  const [active, setActive] = useState(false)
+  const [active, setActive] = useState(false);
 
   const toggleActive = () => {
     setActive(!active)
-  }
+  };
 
-  let durationTotalMinutes
-  const startTime = props.startHour.split(':')
-  const startMinutes = (startTime[0] * 60) + (startTime[1] * 1)
-  const endTime = props.endHour.split(':')
-  const endMinutes = (endTime[0] * 60) + (endTime[1] * 1)
+  let durationTotalMinutes;
+  const startTime = props.startHour.split(':');
+  const startMinutes = (startTime[0] * 60) + (startTime[1] * 1);
+  const endTime = props.endHour.split(':');
+  const endMinutes = (endTime[0] * 60) + (endTime[1] * 1);
 
   if (props.startDayNumber === props.endDayNumber) {
-    durationTotalMinutes = endMinutes - startMinutes
+    durationTotalMinutes = endMinutes - startMinutes;
   } else if ((props.startDayNumber === props.endDayNumber + 1) || (props.startDayNumber === (31 || 30) && props.endDayNumber === 1)) {
-    durationTotalMinutes = endMinutes - startMinutes + 1440
+    durationTotalMinutes = endMinutes - startMinutes + 1440;
   }
 
-  const durationHours = Math.floor(durationTotalMinutes / 60)
-  const durationMinutes = durationTotalMinutes - (durationHours * 60)
+  const durationHours = Math.floor(durationTotalMinutes / 60);
+  const durationMinutes = durationTotalMinutes - (durationHours * 60);
 
   return (
     <div>

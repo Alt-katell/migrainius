@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
@@ -28,48 +28,48 @@ const StyledNoMigraine = styled.h3`
 const MigraineRecordList = () => {
   const existingRecords = true;
 
-  const {user, firebase} = useContext(FirebaseContext)
+  const {user, firebase} = useContext(FirebaseContext);
+
+  const [migraineList, setMigraineList] = useState([]);
 
   useEffect(() => {
-    let migraines;
-
     firebase.getMigraines(user.uid)
-      .then(function(querySnapshot) {
-          querySnapshot.forEach(function(doc) {
-              // doc.data() is never undefined for query doc snapshots
-              console.log(doc.id, " => ", doc.data());
-          });
+      .then(querySnapshot => {
+        const tempList = querySnapshot.docs.map(doc => {
+          return { id: doc.id, ...doc.data() }
+        })
+        setMigraineList(tempList)
       })
       .catch(function(error) {
           console.log("Error getting documents: ", error);
-      });
-  }, [])
+      })
+  }, []);
 
-  // const recordList = props.data.allMigraine.edges.map(migraine => (
-  //   <MigraineRecord
-  //     key={migraine.node.id}
-  //     startDayNumber={migraine.node.startDayNumber}
-  //     startDayDay={migraine.node.startDayDay}
-  //     startDayMonth={migraine.node.startDayMonth}
-  //     startHour={migraine.node.startHour}
-  //     endDayNumber={migraine.node.endDayNumber}
-  //     endDayDay={migraine.node.endDayDay}
-  //     endDayMonth={migraine.node.endDayMonth}
-  //     endHour={migraine.node.endHour}
-  //     medicationTaken={migraine.node.medicationTaken}
-  //     medicationName={migraine.node.medicationName}
-  //     medicationQuantity={migraine.node.medicationQuantity}
-  //     medicationEfficiency={migraine.node.medicationEfficiency}
-  //     activityAtStart={migraine.node.activityAtStart}
-  //     hypoglycemic={migraine.node.hypoglycemic}
-  //     physicalActivity={migraine.node.physicalActivity}
-  //     stressed={migraine.node.stressed}
-  //     angry={migraine.node.angry}
-  //     hoursOfSleep={migraine.node.hoursOfSleep}
-  //     minutesOfSleep={migraine.node.minutesOfSleep}
-  //     intensity={migraine.node.intensity}/>
-  //   )
-  // )
+  const recordList = migraineList.map(migraine => (
+    <MigraineRecord
+      key={migraine.id}
+      startDayNumber={migraine.startDayNumber}
+      startDayDay={migraine.startDayDay}
+      startDayMonth={migraine.startDayMonth}
+      startHour={migraine.startHour}
+      endDayNumber={migraine.endDayNumber}
+      endDayDay={migraine.endDayDay}
+      endDayMonth={migraine.endDayMonth}
+      endHour={migraine.endHour}
+      medicationTaken={migraine.medicationTaken}
+      medicationName={migraine.medicationName}
+      medicationQuantity={migraine.medicationQuantity}
+      medicationEfficiency={migraine.medicationEfficiency}
+      activityAtStart={migraine.activityAtStart}
+      hypoglycemic={migraine.hypoglycemic}
+      physicalActivity={migraine.physicalActivity}
+      stressed={migraine.stressed}
+      angry={migraine.angry}
+      hoursOfSleep={migraine.hoursOfSleep}
+      minutesOfSleep={migraine.minutesOfSleep}
+      intensity={migraine.intensity}/>
+    )
+  )
 
   let records = (
     <div>
@@ -79,14 +79,14 @@ const MigraineRecordList = () => {
     </div>
   )
 
-  // if (existingRecords) {
-  //   records = (
-  //     <div>
-  //       <StyledTitle3>RECORDS</StyledTitle3>
-  //       {recordList}
-  //     </div>
-  //   )
-  // }
+  if (existingRecords) {
+    records = (
+      <div>
+        <StyledTitle3>RECORDS</StyledTitle3>
+        {recordList}
+      </div>
+    )
+  }
 
   return (
     <div>
