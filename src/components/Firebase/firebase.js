@@ -36,9 +36,9 @@ class Firebase {
     await this.auth.signOut()
   }
 
-  getMigraines({userId}) {
-    const userRef = this.db.collection("userProfiles").doc(userId)
-    return this.db.collection('migraines').where("user", "==", userRef)
+  async getMigraines(userId) {
+    const userRef = await this.db.collection("userProfiles").doc(userId)
+    return this.db.collection("migraines").where("user", "==", userRef).get()
   }
 
   addMigraine({data, userId}) {

@@ -31,7 +31,18 @@ const MigraineRecordList = () => {
   const {user, firebase} = useContext(FirebaseContext)
 
   useEffect(() => {
-    firebase.getMigraines({userId: user.uid})
+    let migraines;
+
+    firebase.getMigraines(user.uid)
+      .then(function(querySnapshot) {
+          querySnapshot.forEach(function(doc) {
+              // doc.data() is never undefined for query doc snapshots
+              console.log(doc.id, " => ", doc.data());
+          });
+      })
+      .catch(function(error) {
+          console.log("Error getting documents: ", error);
+      });
   }, [])
 
   // const recordList = props.data.allMigraine.edges.map(migraine => (
