@@ -55,9 +55,9 @@ const Footer = () => {
       <p><StyledFontAwesomeIcon icon={faUserAstronaut} />Hi, I'm Katell Goaër and I developed this demo app</p>
       <p>Contact me</p>
       <StyledUl>
-        <li><StyledA href="https://www.linkedin.com/in/katellgoaer/"><FontAwesomeIcon icon={faLinkedinIn}/></StyledA></li>
-        <li><StyledA href="https://github.com/Alt-katell/migrainius"><FontAwesomeIcon icon={faGithubAlt} /></StyledA></li>
-        <li><StyledA href="https://alt-katell.github.io/"><FontAwesomeIcon icon={faUser} /></StyledA></li>
+        <li><StyledA href="https://www.linkedin.com/in/katellgoaer/" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faLinkedinIn}/></StyledA></li>
+        <li><StyledA href="https://github.com/Alt-katell/migrainius" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faGithubAlt} /></StyledA></li>
+        <li><StyledA href="https://www.katellgoaer.com/" target="_blank" rel="noopener noreferrer"><FontAwesomeIcon icon={faUser} /></StyledA></li>
       </StyledUl>
     </StyledFooter>
   )

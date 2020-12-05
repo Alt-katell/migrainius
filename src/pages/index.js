@@ -151,13 +151,13 @@ export default function Home() {
         <StyledBenefit>
           <StyledBenefitIcon><FontAwesomeIcon icon={faLightbulb} /></StyledBenefitIcon>
           <StyledBenefitTitle>Understand</StyledBenefitTitle>
-          <StyledBenefitContent>Get to better know what can cause a migraine by identifying your crises most common patterns</StyledBenefitContent>
+          <StyledBenefitContent>Get to better know what can cause a migraine by identifying your crises' most common patterns</StyledBenefitContent>
         </StyledBenefit>
 
         <StyledBenefit>
           <StyledBenefitIcon><FontAwesomeIcon icon={faFistRaised} /></StyledBenefitIcon>
           <StyledBenefitTitle>Act</StyledBenefitTitle>
-          <StyledBenefitContent>Limit your exposition to your personal triggers to reduce the number of crises and predict the moment when they happen</StyledBenefitContent>
+          <StyledBenefitContent>Limit your exposure to your personal triggers to reduce the number of crises and predict the moment when they happen</StyledBenefitContent>
         </StyledBenefit>
       </StyledBenefitList>
     </div>
