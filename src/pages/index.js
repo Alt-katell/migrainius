@@ -76,9 +76,9 @@ const StyledHomeButton = styled.button`
 `
 
 const StyledAppImg = styled.img`
-  width: 450px;
+  width: 540px;
   height: auto;
-  border-radius: 160px;
+  border-radius: 4px;
 
   @media (max-width: 1024px) {
     width: 280px;
@@ -136,7 +136,7 @@ export default function Home() {
         </StyledTextPart>
 
         <div className="img-part">
-          <StyledAppImg src="/migrainius_app.jpeg" alt="Migrainius App" />
+          <StyledAppImg src="/migrainius-app.png" alt="Migrainius App" />
         </div>
       </StyledBanner>
 
